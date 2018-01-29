@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {
-	HeaderContainer,
-	HeaderRow,
-	Logo,
-	LogoText,
-	RightBox,
-	SearchBox
+    ButtonLogin,
+    HeaderContainer,
+    HeaderRow,
+    Logo,
+    LogoText,
+    RightBox,
+    SearchBox
 } from "../style-js/Header.style";
 import Button from 'material-ui/Button';
 import { T } from '../helpers/localizeHelper';
@@ -69,6 +70,10 @@ class Header extends Component {
 		this.props.history.push('/exams')
 	};
 
+    handleClickLogin = () => {
+        this.props.history.push('/login')
+    }
+
 	handleLogout = () => {
 		this.setState({ open: false, showLoading: true });
 		this.props.logoutUserFromAuthToken();
@@ -101,62 +106,72 @@ class Header extends Component {
 					{
 						<Logo onClick={this.handleClick.bind(this, "/")}>
 							<LogoStyle src={LogoImage} alt="logo"/>
-							<LogoText>{T('menu.app_name')}</LogoText>
+							<LogoText>MaeKhong Bike</LogoText>
 						</Logo>
 					}
 					<SearchBox/>
 					{
-						<RightBox shadowColor={this.props.shadowColor}>
-							<ButtonStyle onClick={this.handleClick.bind(this, "/")}>
-								{T('menu.dashboard')}
-							</ButtonStyle>
-							<ButtonStyle onClick={this.handleClickCourses.bind(this)}>
-								{T('menu.courses')}
-							</ButtonStyle>
-							<ButtonStyle onClick={this.handleClickCertificates.bind(this)}>
-								{T('menu.certificates')}
-							</ButtonStyle>
-							<ButtonStyle onClick={this.handleClickExams.bind(this)}>
-								{T('menu.exams')}
-							</ButtonStyle>
-
-
-							<Profile handleClickProfile={this.handleClickProfile}{...this.props}
-							         image_url={this.props.user.image_url}/>
-							<Popover
-								open={this.state.open}
-								anchorEl={this.state.anchorEl}
-								anchorReference={this.state.anchorReference}
-								onClose={this.handleRequestClose}
-								anchorOrigin={{
-									vertical: "top",
-									horizontal: "right",
-								}}
-								transformOrigin={{
-									vertical: "bottom",
-									horizontal: "right",
-								}}
-							>
-								<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
-								          onClick={this.handleClickMyProfile.bind(this)}>
-									<i className="material-icons"
-									   style={{ fontSize: "22px", paddingRight: "15px" }}>
-										person_outline</i>My Profile
-								</MenuItem>
-								<div style={{
-									borderTopStyle: "solid",
-									borderTopWidth: "thin",
-									borderTopColor: "#bdc3c7"
-								}}>
-									<MenuItem style={{ color: "red", fontSize: "14px", letterSpacing: "0.5px" }}
-									          onClick={this.handleLogout.bind(this)}>
+                        Object.keys(this.props.user).length !== 0 ?
+							<RightBox>
+								<Button onClick={this.handleClick.bind(this, "/")}>
+                                    {T('menu.fine_course')}
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/training")}>
+                                    {T('menu.training')}
+								</Button>
+								<Profile handleClickProfile={this.handleClickProfile}{...this.props}
+										 image_url={this.props.user.image_url}/>
+								<Popover
+									open={this.state.open}
+									anchorEl={this.state.anchorEl}
+									anchorReference={this.state.anchorReference}
+									onRequestClose={this.handleRequestClose}
+									anchorOrigin={{
+                                        vertical: "top",
+                                        horizontal: "right",
+                                    }}
+									transformOrigin={{
+                                        vertical: "bottom",
+                                        horizontal: "right",
+                                    }}
+								>
+									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
+											  onClick={this.handleClickMyProfile.bind(this)}>
 										<i className="material-icons"
 										   style={{ fontSize: "22px", paddingRight: "15px" }}>
-											exit_to_app</i>Sign Out
+											person_outline</i>My Profile
 									</MenuItem>
-								</div>
-							</Popover>
-						</RightBox>
+									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
+											  onClick={this.handleClickPaymentMethod.bind(this)}>
+										<i className="material-icons"
+										   style={{ fontSize: "22px", paddingRight: "15px" }}>
+											credit_card</i>Payment Methods
+									</MenuItem>
+									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
+											  onClick={this.handleClickPurchaseHistory.bind(this)}>
+										<i className="material-icons"
+										   style={{ fontSize: "22px", paddingRight: "15px" }}>
+											history</i>Purchase History
+									</MenuItem>
+									<div style={{
+                                        borderTopStyle: "solid",
+                                        borderTopWidth: "thin",
+                                        borderTopColor: "#bdc3c7"
+                                    }}>
+										<MenuItem style={{ color: "red", fontSize: "14px", letterSpacing: "0.5px" }}
+												  onClick={this.handleLogout.bind(this)}>
+											<i className="material-icons"
+											   style={{ fontSize: "22px", paddingRight: "15px" }}>
+												exit_to_app</i>Sign Out
+										</MenuItem>
+									</div>
+								</Popover>
+
+							</RightBox>
+                            :
+							<ButtonLogin raised onClick={this.handleClickLogin}>
+								Sign in / Register
+							</ButtonLogin>
 					}
 				</HeaderRow>
 			</HeaderContainer>

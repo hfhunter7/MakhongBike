@@ -9,6 +9,8 @@ import BestSellingItem from "../components/BestSellingItem";
 import OutStandStat from "../components/outstand/OutStandStat";
 import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
+import ImageSlide from "../components/ImageSlide";
+import Carousel from "../components/Carousel";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -80,26 +82,7 @@ class Dashboard extends Component {
                     <TitleDashBoard>Your Dashboard</TitleDashBoard>
                     <HRLine/>
                     <Content>
-                        <LeftRow>
-                            <OutStandBalance/>
-                            <OutStandStat icon_color="#56d1c1"
-                                          icon_name="shopping_cart"
-                                          count_item="888"
-                                          item_name="Orders"/>
-
-                            <OutStandStat icon_color="#f76161"
-                                          icon_name="supervisor_account"
-                                          count_item="77"
-                                          item_name="Buyer"/>
-
-                            <OutStandStat icon_color="#62a9f9"
-                                          icon_name="search"
-                                          count_item="6666"
-                                          item_name="Visits"/>
-                        </LeftRow>
-                        <RightRow>
-                            <BestSellingItem sellings={this.props.best_selling}/>
-                        </RightRow>
+                        <Carousel />
                     </Content>
                     <Footer/>
                 </Row>

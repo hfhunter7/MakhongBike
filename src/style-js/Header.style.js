@@ -1,5 +1,6 @@
 import { IconSpan } from "./Icon.style";
 import styled from 'styled-components';
+import Button from 'material-ui/Button';
 
 export const LogoIcon = styled(IconSpan)`
 	color: #fff;
@@ -14,11 +15,11 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderRow = styled.div`
-	height: 56px;
+	height: 66px;
 	padding: 0 16px;
 	flex-direction: row;
 	display: flex;
-	background-color: #549635;
+	background-color: #FF6600;
 	box-shadow: 0 5px 10px -3px ${props => props.shadowColor ? props.shadowColor : '#ccc'};
 	align-items: center;
 `;
@@ -38,6 +39,15 @@ export const LogoText = styled.div`
 	@media (max-width: 767px) {
 		display: none;
 	}
+`;
+
+export const ButtonLogin = styled(Button)`
+	  width: 150px !important;
+	  margin-left: 10px;
+      background-color: #DCDCDC !important;
+       @media (max-width: 767px){
+          display: none !important;
+       }
 `;
 
 export const SearchBox = styled.div`

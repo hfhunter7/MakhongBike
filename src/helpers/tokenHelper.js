@@ -1,8 +1,8 @@
 import jwt from 'jwt-simple';
 
 export const googleAppID = {
-    development: "7290147380-dk9rl08lacocrco9npq0if8kdmpokaoj.apps.googleusercontent.com",
-    production: "7290147380-dk9rl08lacocrco9npq0if8kdmpokaoj.apps.googleusercontent.com",
+    development: "AIzaSyC186MvvAO1nuwg4OYiccn4sXdGeDwnk9c.apps.googleusercontent.com",
+    production: "AIzaSyC186MvvAO1nuwg4OYiccn4sXdGeDwnk9c.apps.googleusercontent.com",
 };
 
 export const googleAppSecret = {

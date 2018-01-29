@@ -34,7 +34,7 @@ class App extends Component {
             <Router onUpdate={handleUpdate}>
                 <div>
                     <Switch>
-                        <PrivateRoute exact path="/" component={Dashboard} />
+                        <Route exact path="/" component={Dashboard} />
                         <PrivateRoute exact path="/profile" component={MyProfile} />
                         <Route exact path="/login" component={SignIn} />
                         <PrivateRoute exact path="/courses" component={Courses} />
