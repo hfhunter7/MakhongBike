@@ -97,7 +97,7 @@ class AboutUs extends Component {
                     <div className={classes.root}>
                         <ExpansionPanel>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                <TypographyTextHeader>ประวัติความเป็นมา</TypographyTextHeader>
+                                <TypographyTextHeader>ประวัติความเป็นมา Jumbo</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <TypographyText>
