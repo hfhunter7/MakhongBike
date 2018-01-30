@@ -14,6 +14,8 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel';
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import ImageSlide from "../components/ImageSlide";
+import President from "../image/president.JPG";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -43,8 +45,8 @@ const HRLine = styled.hr`
 const Content = styled.div`
     margin-left: 5%;
     margin-right: 5%;
-    display: flex;
-    
+    display: block;
+    width: 90%;
     @media (max-width: 767px) {
         display: block;
 		width: 100%;
@@ -52,11 +54,9 @@ const Content = styled.div`
 	}
 `;
 
-const ContentImage = styled.div`
-    width: 70%;
-    height: 150px;
-    margin-left: 15%;
-    background-color: #ef9a9a;
+const ContentPresident = styled.div`
+    text-align: center;
+    margin-bottom: 1%;
 `;
 
 const styles = theme => ({
@@ -70,6 +70,15 @@ const styles = theme => ({
     },
 });
 
+const TypographyText = styled(Typography)`
+    font-size: 16px;
+`;
+
+const TypographyTextHeader = styled(Typography)`
+    font-size: 18px;
+    font-weight: 500;
+`;
+
 class AboutUs extends Component {
     render() {
         const { classes } = this.props;
@@ -78,48 +87,52 @@ class AboutUs extends Component {
             <Container>
                 <Header {...this.props}/>
                 <Row>
-                    <TitleDashBoard>About us</TitleDashBoard>
+                    <TitleDashBoard>เกี่ยวกับเรา</TitleDashBoard>
                     <HRLine/>
                     <Content>
-                        <ContentImage></ContentImage>
+                        <ImageSlide />
                     </Content>
                     <HRLine/>
 
                     <div className={classes.root}>
                         <ExpansionPanel>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography className={classes.heading}>ประวัติความเป็นมา</Typography>
+                                <TypographyTextHeader>ประวัติความเป็นมา</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Typography>
+                                <TypographyText>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                                     sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                                     sit amet blandit leo lobortis eget.
-                                </Typography>
+                                </TypographyText>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                         <ExpansionPanel>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography className={classes.heading}>วิสัยทัศน์</Typography>
+                                <TypographyTextHeader>วิสัยทัศน์</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Typography>
+                                <TypographyText>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                                     sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                                     sit amet blandit leo lobortis eget.
-                                </Typography>
+                                </TypographyText>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                         <ExpansionPanel>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography className={classes.heading}>ประธานชมรม</Typography>
+                                <TypographyTextHeader>ประธานชมรม</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Typography>
+                                <TypographyText>
+                                    <ContentPresident>
+                                        <img src={President} alt=""/>
+                                    </ContentPresident>
+
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                                     sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                                     sit amet blandit leo lobortis eget.
-                                </Typography>
+                                </TypographyText>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     </div>

@@ -8,14 +8,7 @@ import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const defaultState = {
-    user: {},
-    courses: [],
-    course_detail: {
-        trainer: {},
-        section_courses: [],
-    },
-    tags:[],
-    exams: []
+    user: {}
 };
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools(applyMiddleware(thunk)));

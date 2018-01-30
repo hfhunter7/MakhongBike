@@ -5707,7 +5707,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@~15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5958,6 +5958,12 @@ react-pagify@^2.4.0:
   resolved "https://registry.yarnpkg.com/react-pagify/-/react-pagify-2.4.0.tgz#3e35457f99b9aface712cc1b53e27ac3c7a249c5"
   dependencies:
     prop-types "^15.6.0"
+
+react-photo-gallery@^6.0.22:
+  version "6.0.22"
+  resolved "https://registry.yarnpkg.com/react-photo-gallery/-/react-photo-gallery-6.0.22.tgz#733126f9a4c420af8977f868222b074faa0c764a"
+  dependencies:
+    prop-types "~15.6.0"
 
 react-popper@^0.7.4:
   version "0.7.4"

@@ -9,7 +9,7 @@ import {
     SearchBox
 } from "../style-js/Header.style";
 import Button from 'material-ui/Button';
-import { T } from '../helpers/localizeHelper';
+
 import Popover from 'material-ui/Popover';
 import Profile from "./Profile";
 import { MenuItem } from "material-ui/Menu";
@@ -19,11 +19,8 @@ import { loginUserFromAuthToken, logoutUserFromAuthToken } from "../actions/acti
 import { current_user_storage, isLoggedIn_storage } from "../helpers/sessionHelper";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import LogoImage from '../image/logo_outline.png'
+import LogoImage from '../image/maekhongbike_logo.png'
 
-const ButtonStyle = styled(Button)`
- 	color :ghostwhite !important;
- `;
 const LogoStyle = styled.img`
 	background-color: #fff;
 	height: 45px;
@@ -110,7 +107,6 @@ class Header extends Component {
 					{
 						<Logo onClick={this.handleClick.bind(this, "/")}>
 							<LogoStyle src={LogoImage} alt="logo"/>
-							<LogoText>MaeKhong Bike</LogoText>
 						</Logo>
 					}
 					<SearchBox/>
@@ -135,7 +131,7 @@ class Header extends Component {
 									open={this.state.open}
 									anchorEl={this.state.anchorEl}
 									anchorReference={this.state.anchorReference}
-									onRequestClose={this.handleRequestClose}
+									onClose={this.handleRequestClose}
 									anchorOrigin={{
                                         vertical: "top",
                                         horizontal: "right",
@@ -150,12 +146,6 @@ class Header extends Component {
 										<i className="material-icons"
 										   style={{ fontSize: "22px", paddingRight: "15px" }}>
 											person_outline</i>My Profile
-									</MenuItem>
-									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
-											  onClick={this.handleClickPaymentMethod.bind(this)}>
-										<i className="material-icons"
-										   style={{ fontSize: "22px", paddingRight: "15px" }}>
-											credit_card</i>Payment Methods
 									</MenuItem>
 									<div style={{
                                         borderTopStyle: "solid",

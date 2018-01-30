@@ -19,7 +19,7 @@ export const HeaderRow = styled.div`
 	padding: 0 16px;
 	flex-direction: row;
 	display: flex;
-	background-color: #FF6600;
+	background-color: #FF9933;
 	box-shadow: 0 5px 10px -3px ${props => props.shadowColor ? props.shadowColor : '#ccc'};
 	align-items: center;
 `;
@@ -27,7 +27,7 @@ export const Logo = styled.div`
 	display: flex;
 	flex-direction: row;
 	cursor: pointer;
-	
+	margin-left: 1%;
 `;
 
 export const LogoText = styled.div`

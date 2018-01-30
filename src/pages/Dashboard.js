@@ -9,6 +9,7 @@ import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
 import ImageSlide from "../components/ImageSlide";
 
+
 const TitleDashBoard = styled.div`
     font-size: 20px;
     padding-left: 5%;
@@ -37,13 +38,23 @@ const HRLine = styled.hr`
 const Content = styled.div`
     margin-left: 5%;
     margin-right: 5%;
-    display: flex;
-    
+    display: block;
+    width: 90%;
     @media (max-width: 767px) {
         display: block;
 		width: 100%;
 		margin: 0;
 	}
+`;
+
+const ContentTextWelcome = styled.div`
+    text-align: center;
+`;
+
+const WelcomeText = styled.h1`
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: -7%;
+    margin-top: 3%;
 `;
 
 class Dashboard extends Component {
@@ -52,11 +63,15 @@ class Dashboard extends Component {
             <Container>
                 <Header {...this.props}/>
                 <Row>
-                    <TitleDashBoard>Your Dashboard</TitleDashBoard>
+                    <TitleDashBoard></TitleDashBoard>
                     <HRLine/>
                     <Content>
-
+                        <ImageSlide />
                     </Content>
+                    <HRLine/>
+                    <ContentTextWelcome>
+                        <WelcomeText>ยินดีต้อนรับสู่เว็บไซต์ MAEKHONG BIKE</WelcomeText>
+                    </ContentTextWelcome>
                     <Footer/>
                 </Row>
                 <NavBarFooter {...this.props}/>
@@ -65,46 +80,7 @@ class Dashboard extends Component {
     }
 }
 
-Dashboard.defaultProps = {
-    best_selling: [ {
-        item_name: 'Google Analytices Certification Exam Training',
-        type_name: 'Course',
-        total_sold: 102
-    },
-        {
-            item_name: 'microsoft Certification exam- Technology Literacy for Educators',
-            type_name: 'Exam',
-            total_sold: 101
-        },
-        {
-            item_name: 'How to Earn More with Google Analysis',
-            type_name: 'Course',
-            total_sold: 30
-        },
-        {
-            item_name: 'test',
-            type_name: 'test',
-            total_sold: 0
-        }, {
-            item_name: 'test',
-            type_name: 'test',
-            total_sold: 0
-        },
-        {
-            item_name: 'test',
-            type_name: 'test',
-            total_sold: 0
-        }, {
-            item_name: 'test',
-            type_name: 'test',
-            total_sold: 0
-        }, {
-            item_name: 'test',
-            type_name: 'test',
-            total_sold: 0
-        }
-    ]
-};
+Dashboard.defaultProps = {};
 
 function mapStateToProps( state ) {
     return {
