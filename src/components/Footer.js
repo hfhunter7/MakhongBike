@@ -12,7 +12,7 @@ class Footer extends Component {
 							<br/><br/>
 							<span>Phone: 091-3874190</span>
 							<br/>
-							<span>Facebook: <a href="https://www.facebook.com/nut.intayot">Nut Inatayot</a></span>
+							<span>Facebook: <a href="https://www.facebook.com/nut.intayot">Nut Intayot</a></span>
 						</div>
 					</div>
 
