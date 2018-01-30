@@ -69,13 +69,10 @@ class SignIn extends Component {
                     <SignInTapTop />
                     <SignInRow mobile full center>
                         <SignInLogo name="account_balance"/>
-                        <SignInTextLogo>Training Center</SignInTextLogo>
-                        <SignInTextDescription>Online training courses with certificates that can help you build your skills and advance your career!</SignInTextDescription>
+                        <SignInTextLogo>Maekhong Bike Login</SignInTextLogo>
 
-                        <SignInRow marginBottom="10px">
-                            <SignInIcon name="play_circle_filled" color="#ccc"/>
-                            <SignInIcon name="description" color="#ccc"/>
-                            <SignInIcon name="help_outline" color="#ccc"/>
+
+                        <SignInRow marginBottom="50px">
                         </SignInRow>
                         <GoogleSignButton id="signup-with-google-button" textTransform="uppercase"/>
                     </SignInRow>

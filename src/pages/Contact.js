@@ -81,7 +81,7 @@ class Contact extends Component {
                     </TitleDashBoard>
                     <HRLine/>
                     <PhoneText>Tel: 091-3874190</PhoneText>
-                    <FacebookText>Facebook: <a href="https://www.facebook.com/nut.intayot">Nut Inatayot</a></FacebookText>
+                    <FacebookText>Facebook: <a href="https://www.facebook.com/nut.intayot">Nut Intayot</a></FacebookText>
                     <Content>
                         <ContentImage>
                             <img src={ContactImg} alt=""/>

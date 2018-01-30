@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
 import ImageSlide from "../components/ImageSlide";
+import Loading from "../components/Loading";
 
 
 const TitleDashBoard = styled.div`
@@ -58,6 +59,10 @@ const WelcomeText = styled.h1`
 `;
 
 class Dashboard extends Component {
+    constructor(){
+        super();
+    }
+
     render() {
         return (
             <Container>

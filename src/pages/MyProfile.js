@@ -192,18 +192,7 @@ class MyProfile extends Component {
 								                   {...this.props}/>
 							</ProfileDetail>
 						</ProfileContent>
-						<CustomerBox>
-							<div className="header-customer-box">
-								<Billing>Bank account</Billing>
-								<ButtonAddBilling onClick={this.handleClickEditAddressBilling} raised
-                                                  className="edit-buttoncus">ADD</ButtonAddBilling>
-								<AddBankAccount open={this.state.open_edit_address}
-								                    handleRequestClose={this.handleRequestCloseAddress}
-                                                    handleSaveAccount={this.handleSaveAccount}
-								                    user={this.props.user}
-								                    {...this.props}/>
-							</div>
-                        </CustomerBox>
+
                     </ProfileContainer>
                     <Footer/>
                 </Row>

@@ -3,9 +3,6 @@ import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
 import styled from 'styled-components';
 
-import ImageOne from "../image/homepage/pic1.jpg";
-import ImageTwo from "../image/homepage/pic2.jpg";
-
 const ContentGallery = styled(Gallery)`
 
 `;
@@ -54,12 +51,13 @@ class ImageSlide extends Component {
 
     render() {
         const light_box_photos = [
-            { src: ImageOne },
-            { src: ImageTwo },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic2.jpg?alt=media&token=f3790c70-5f91-47c9-b56e-60063d6f3a31' },
+
         ];
 
         const homepage_photos = [
-            { src: ImageOne },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
         ];
 
         return (

@@ -55,18 +55,6 @@ class Header extends Component {
 		this.props.history.push('/profile')
 	};
 
-	handleClickCourses() {
-		this.props.history.push('/courses')
-	};
-
-	handleClickCertificates() {
-		this.props.history.push('/certificates')
-	};
-
-	handleClickExams() {
-		this.props.history.push('/exams')
-	};
-
     handleClickLogin = () => {
         this.props.history.push('/login')
     }
@@ -83,10 +71,6 @@ class Header extends Component {
 	handleRequestClose = () => {
 		this.setState({ open: false })
 	};
-
-    handleClickPaymentMethod() {
-        this.props.history.push('/payment')
-    };
 
 	componentDidMount() {
 		if (isLoggedIn_storage()) {
@@ -116,13 +100,13 @@ class Header extends Component {
 								<Button onClick={this.handleClick.bind(this, "/")}>
                                     Homepage
 								</Button>
-								<Button onClick={this.handleClick.bind(this, "/training")}>
+								<Button onClick={this.handleClick.bind(this, "/about-us")}>
                                     About us
 								</Button>
-								<Button onClick={this.handleClick.bind(this, "/training")}>
+								<Button onClick={this.handleClick.bind(this, "/booking")}>
 									Booking
 								</Button>
-								<Button onClick={this.handleClick.bind(this, "/training")}>
+								<Button onClick={this.handleClick.bind(this, "/contact")}>
 									Contact
 								</Button>
 								<Profile handleClickProfile={this.handleClickProfile}{...this.props}
