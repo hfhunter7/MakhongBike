@@ -1,13 +1,13 @@
 import jwt from 'jwt-simple';
 
 export const googleAppID = {
-    development: "AIzaSyC186MvvAO1nuwg4OYiccn4sXdGeDwnk9c.apps.googleusercontent.com",
-    production: "AIzaSyC186MvvAO1nuwg4OYiccn4sXdGeDwnk9c.apps.googleusercontent.com",
+    development: "50054141864-skgi9qk2tj28625kgb4hs5jtr1qqv7p6.apps.googleusercontent.com",
+    production: "50054141864-skgi9qk2tj28625kgb4hs5jtr1qqv7p6.apps.googleusercontent.com",
 };
 
 export const googleAppSecret = {
-    development: "ZAbVArsSRUsaLhQZcj5aBAbC",
-    production: "ZAbVArsSRUsaLhQZcj5aBAbC",
+    development: "ZuSMG6Zc6eG4mUuyuTlHBH11",
+    production: "ZuSMG6Zc6eG4mUuyuTlHBH11",
 };
 
 const appToken = {
@@ -17,7 +17,7 @@ const appToken = {
 };
 
 const appHeader = {
-    development: "trainingcenter@version1.0",
+    development: "maekhongbike@version1.0",
     staging: process.env.REACT_APP_SECRET_HEADER,
     production: process.env.REACT_APP_SECRET_HEADER
 };

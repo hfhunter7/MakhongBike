@@ -1,8 +1,8 @@
 export const apiUrl = {
-	// development: "http://localhost:9999/v1",
-	// production: "http://localhost:9999/v1",
-	development: "http://104.199.248.236/maekhongbikebackend-1/v1",
-	production: "http://104.199.248.236/maekhongbikebackend-1/v1",
+	development: "http://localhost:9999/v1",
+	production: "http://localhost:9999/v1",
+	//development: "http://104.199.248.236/maekhongbikebackend-1/v1",
+	//production: "http://104.199.248.236/maekhongbikebackend-1/v1",
 };
 
 export function extraUrl(params) {

@@ -18,16 +18,16 @@ class Carousel extends Component {
 			return (
 			<div className="carousel-box">
 				<Slider {...carousel}>
-					<div><h3 style={{background: "#FAFAFA", height: "300px"}}>1</h3></div>
-					<div><h3 style={{background: "#F5F5F5", height: "300px"}}>2</h3></div>
-					<div><h3 style={{background: "#EEEEEE", height: "300px"}}>3</h3></div>
-					<div><h3 style={{background: "#E0E0E0", height: "300px"}}>4</h3></div>
-					<div><h3 style={{background: "#BDBDBD", height: "300px"}}>5</h3></div>
-					<div><h3 style={{background: "#9E9E9E", height: "300px"}}>6</h3></div>
-					<div><h3 style={{background: "#757575", height: "300px"}}>7</h3></div>
-					<div><h3 style={{background: "#616161", height: "300px"}}>8</h3></div>
-					<div><h3 style={{background: "#424242", height: "300px"}}>9</h3></div>
-					<div><h3 style={{background: "#212121", height: "300px"}}>10</h3></div>
+					<div><h3 style={{background: "#FAFAFA", height: "300px"}}>1111</h3></div>
+					<div><h3 style={{background: "#F5F5F5", height: "300px"}}>22222</h3></div>
+					<div><h3 style={{background: "#EEEEEE", height: "300px"}}>33333</h3></div>
+					<div><h3 style={{background: "#E0E0E0", height: "300px"}}>44444</h3></div>
+					<div><h3 style={{background: "#BDBDBD", height: "300px"}}>55555</h3></div>
+					<div><h3 style={{background: "#9E9E9E", height: "300px"}}>66666</h3></div>
+					<div><h3 style={{background: "#757575", height: "300px"}}>77777</h3></div>
+					<div><h3 style={{background: "#616161", height: "300px"}}>88888</h3></div>
+					<div><h3 style={{background: "#424242", height: "300px"}}>99999</h3></div>
+					<div><h3 style={{background: "#212121", height: "300px"}}>109999</h3></div>
 				</Slider>
 
 			</div>

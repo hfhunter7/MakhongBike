@@ -4,13 +4,10 @@ import Header from "../components/Header";
 import { connect } from 'react-redux';
 import { Container, Row } from "../style-js/Grid.style";
 import styled from 'styled-components';
-import OutStandBalance from "../components/outstand/OutStandBalance";
-import BestSellingItem from "../components/BestSellingItem";
-import OutStandStat from "../components/outstand/OutStandStat";
+
 import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
 import ImageSlide from "../components/ImageSlide";
-import Carousel from "../components/Carousel";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -37,9 +34,6 @@ const HRLine = styled.hr`
 	}
 `;
 
-// const TotalExtens =styled(table)`
-//
-// `;
 const Content = styled.div`
     margin-left: 5%;
     margin-right: 5%;
@@ -52,27 +46,6 @@ const Content = styled.div`
 	}
 `;
 
-const LeftRow = styled.div`
-    display: inline-block;
-    width: calc(25% - 5px);
-    
-    @media (max-width: 767px) {
-		width: 100%;
-	}
-`;
-
-const RightRow = styled.div`
-    display: inline-block;
-    width: calc(75% - 5px);
-    margin-left: 2%;
-    
-    @media (max-width: 767px) {
-		width: auto;
-		margin: 40px 0 20px 0;
-		
-	}
-`;
-
 class Dashboard extends Component {
     render() {
         return (
@@ -82,7 +55,7 @@ class Dashboard extends Component {
                     <TitleDashBoard>Your Dashboard</TitleDashBoard>
                     <HRLine/>
                     <Content>
-                        <Carousel />
+
                     </Content>
                     <Footer/>
                 </Row>

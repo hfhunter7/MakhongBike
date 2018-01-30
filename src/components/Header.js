@@ -87,6 +87,10 @@ class Header extends Component {
 		this.setState({ open: false })
 	};
 
+    handleClickPaymentMethod() {
+        this.props.history.push('/payment')
+    };
+
 	componentDidMount() {
 		if (isLoggedIn_storage()) {
 			const user = this.props.user;
@@ -114,10 +118,16 @@ class Header extends Component {
                         Object.keys(this.props.user).length !== 0 ?
 							<RightBox>
 								<Button onClick={this.handleClick.bind(this, "/")}>
-                                    {T('menu.fine_course')}
+                                    Homepage
 								</Button>
 								<Button onClick={this.handleClick.bind(this, "/training")}>
-                                    {T('menu.training')}
+                                    About us
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/training")}>
+									Booking
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/training")}>
+									Contact
 								</Button>
 								<Profile handleClickProfile={this.handleClickProfile}{...this.props}
 										 image_url={this.props.user.image_url}/>
@@ -147,12 +157,6 @@ class Header extends Component {
 										   style={{ fontSize: "22px", paddingRight: "15px" }}>
 											credit_card</i>Payment Methods
 									</MenuItem>
-									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
-											  onClick={this.handleClickPurchaseHistory.bind(this)}>
-										<i className="material-icons"
-										   style={{ fontSize: "22px", paddingRight: "15px" }}>
-											history</i>Purchase History
-									</MenuItem>
 									<div style={{
                                         borderTopStyle: "solid",
                                         borderTopWidth: "thin",
@@ -169,9 +173,27 @@ class Header extends Component {
 
 							</RightBox>
                             :
-							<ButtonLogin raised onClick={this.handleClickLogin}>
-								Sign in / Register
-							</ButtonLogin>
+							<RightBox>
+								<Button onClick={this.handleClick.bind(this, "/")}>
+									Homepage
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/about-us")}>
+									About us
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/booking")}>
+									Booking
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/contact")}>
+									Contact
+								</Button>
+								<Button onClick={this.handleClick.bind(this, "/register")}>
+									Register
+								</Button>
+								<ButtonLogin raised onClick={this.handleClickLogin}>
+									Sign in
+								</ButtonLogin>
+							</RightBox>
+
 					}
 				</HeaderRow>
 			</HeaderContainer>

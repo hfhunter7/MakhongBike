@@ -4,12 +4,9 @@ import { Container, Row } from '../style-js/Grid.style'
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import NavBarFooter from '../components/NavBarFooter';
-import BankAccountDetail from '../pages/profile/BankAccountDetail';
+
 import Footer from "../components/Footer";
-// import EditProfileDialog from "../components/shared/EditProfileDialog";
-// import EditAddressBilling from "../components/shared/EditAddressBilling";
-// import { updateProfile } from "../actions/actionCreators";
-// import { updateAddress } from "../actions/actionCreators";
+
 import {
     ProfileContainer,
     ProfileContent,
@@ -24,9 +21,6 @@ import {
     ProfileInformationBox,
     ProfileInformationName,
     CustomerBox,
-    BankEmptyContainer,
-    IconEmpty,
-    BankEmptySubTitle,
     Billing,
     ButtonAddBilling,
 } from '../style-js/Profile.style'
@@ -38,7 +32,7 @@ import Loading from "../components/Loading";
 class MyProfile extends Component {
 
     constructor( props ) {
-        super(props)
+        super(props);
         this.state = {
             address: "",
             city: "",
@@ -93,15 +87,6 @@ class MyProfile extends Component {
         if (Object.keys(this.props.user).length === 0) return <Loading />
         let birthday = "";
         if (this.props.user) {
-            // if (this.props.user.bank_account !== undefined) {
-            // 	if (this.props.user.bank_account.length > 0) {
-            // 		let bank_name = this.props.user.bank_account[ 0 ].bank_name || ""
-            // 		let bank_number = this.props.user.bank_account[ 0 ].bank_number || ""
-            // 		let bank_type = this.props.user.bank_account[ 0 ].bank_type || ""
-            // 		let bank_branch = this.props.user.bank_account[ 0 ].bank_branch || ""
-            // 		let bank_holder = this.props.user.bank_account[ 0 ].bank_holder || ""
-            // 	}
-            // }
             if (this.props.user.birthday !== undefined && this.props.user.birthday !== null) {
                 let month = this.props.user.birthday.substring(5, 7);
                 let day = this.props.user.birthday.substring(8, 10);
@@ -218,28 +203,6 @@ class MyProfile extends Component {
 								                    user={this.props.user}
 								                    {...this.props}/>
 							</div>
-                            {
-                                this.props.user ?
-                                    this.props.user.bank_account.length > 0 ?
-                                        this.props.user.bank_account.map(( item, index ) => {
-                                            return <BankAccountDetail key={index}
-                                                                      id={item.id}
-                                                                      bank_name={item.bank_name}
-                                                                      bank_number={item.bank_number}
-                                                                      bank_type={item.bank_type}
-                                                                      bank_branch={item.bank_branch}
-                                                                      bank_holder={item.bank_holder}
-                                                                      trainer_id={item.trainer_id}
-                                                                      showLoadingFunc={this.showLoadingFunc}/>
-                                        })
-                                        :
-                                        <BankEmptyContainer>
-	                                        <IconEmpty className="material-icons ">local_atm</IconEmpty>
-                                            <BankEmptySubTitle>No Bank Account</BankEmptySubTitle>
-                                        </BankEmptyContainer>
-                                    :
-                                    <div>dddd</div>
-                            }
                         </CustomerBox>
                     </ProfileContainer>
                     <Footer/>
