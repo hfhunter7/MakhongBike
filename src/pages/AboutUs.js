@@ -80,6 +80,17 @@ const TypographyTextHeader = styled(Typography)`
 `;
 
 class AboutUs extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            light_box_photos: [
+                { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
+                { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic2.jpg?alt=media&token=f3790c70-5f91-47c9-b56e-60063d6f3a31' },
+            ]
+        }
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -87,7 +98,7 @@ class AboutUs extends Component {
             <Container>
                 <Header {...this.props}/>
                 <Row>
-                    <TitleDashBoard>เกี่ยวกับเรา</TitleDashBoard>
+                    <TitleDashBoard>ทีมของเรา</TitleDashBoard>
                     <HRLine/>
                     <Content>
                         <ImageSlide />
@@ -97,7 +108,7 @@ class AboutUs extends Component {
                     <div className={classes.root}>
                         <ExpansionPanel>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                <TypographyTextHeader>ประวัติความเป็นมา Jumbo</TypographyTextHeader>
+                                <TypographyTextHeader>ประวัติความเป็นมา</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <TypographyText>
