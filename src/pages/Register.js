@@ -48,13 +48,12 @@ const Content = styled.div`
 
 const ContentForm = styled.form`
     margin-left: 36%;
-    display: block;
 `;
 
 const TextInput = styled(TextField)`
     width: 45%;
     margin-bottom: 1%;
-    display: flex;
+    display: flex !important;
 `;
 
 const ButtonRegister = styled(Button)`
