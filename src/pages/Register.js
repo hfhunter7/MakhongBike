@@ -70,10 +70,6 @@ const HRLineBTM = styled.hr`
 `;
 
 class Register extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <Container>

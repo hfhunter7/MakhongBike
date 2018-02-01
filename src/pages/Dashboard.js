@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
 import ImageSlide from "../components/ImageSlide";
-import Loading from "../components/Loading";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -58,10 +57,6 @@ const WelcomeText = styled.h1`
 `;
 
 class Dashboard extends Component {
-    constructor(){
-        super();
-    }
-
     render() {
         const images = [
             { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },

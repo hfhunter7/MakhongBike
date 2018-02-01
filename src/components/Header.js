@@ -4,7 +4,6 @@ import {
     HeaderContainer,
     HeaderRow,
     Logo,
-    LogoText,
     RightBox,
     SearchBox
 } from "../style-js/Header.style";

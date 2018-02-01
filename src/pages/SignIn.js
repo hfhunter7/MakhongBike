@@ -8,8 +8,6 @@ import {
     SignInRow,
     SignInLogo,
     SignInTextLogo,
-    SignInTextDescription,
-    SignInIcon
 } from '../style-js/SignIn.style';
 
 import GoogleSignButton from '../components/GoogleSignButton';

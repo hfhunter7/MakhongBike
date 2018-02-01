@@ -20,13 +20,9 @@ import {
     ProfileEmail,
     ProfileInformationBox,
     ProfileInformationName,
-    CustomerBox,
-    Billing,
-    ButtonAddBilling,
 } from '../style-js/Profile.style'
 import EditProfileDialog from "../components/shared/EditProfileDialog";
 import { updateProfileTrainer, addBank } from "../actions/actionCreators";
-import AddBankAccount from "../components/shared/AddBankAccount";
 import Loading from "../components/Loading";
 
 class MyProfile extends Component {

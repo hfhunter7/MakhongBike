@@ -12,12 +12,10 @@ import { withStyles } from 'material-ui/styles';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel, FormHelperText, FormGroup, } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
-import Dialog, {
-    DialogActions,
+import {
     DialogContent,
-    DialogTitle,
 } from 'material-ui/Dialog';
-import Input, { InputLabel } from 'material-ui/Input';
+import { InputLabel } from 'material-ui/Input';
 import Select from 'material-ui/Select';
 import { MenuItem } from 'material-ui/Menu';
 import Checkbox from 'material-ui/Checkbox';
