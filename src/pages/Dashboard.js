@@ -10,7 +10,6 @@ import Footer from "../components/Footer";
 import ImageSlide from "../components/ImageSlide";
 import Loading from "../components/Loading";
 
-
 const TitleDashBoard = styled.div`
     font-size: 20px;
     padding-left: 5%;
@@ -64,6 +63,15 @@ class Dashboard extends Component {
     }
 
     render() {
+        const images = [
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic2.jpg?alt=media&token=f3790c70-5f91-47c9-b56e-60063d6f3a31' },
+        ];
+
+        const image_show = [
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
+        ];
+        console.log(images)
         return (
             <Container>
                 <Header {...this.props}/>
@@ -71,7 +79,7 @@ class Dashboard extends Component {
                     <TitleDashBoard></TitleDashBoard>
                     <HRLine/>
                     <Content>
-                        <ImageSlide />
+                        <ImageSlide light_box_image={images} show_image={image_show}/>
                     </Content>
                     <HRLine/>
                     <ContentTextWelcome>

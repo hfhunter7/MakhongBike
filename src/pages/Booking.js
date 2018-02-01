@@ -52,7 +52,6 @@ const Content = styled.div`
     margin-left: 5%;
     margin-right: 5%;
     display: flex;
-    height: 110px;
     @media (max-width: 767px) {
         display: block;
 		width: 100%;
@@ -73,7 +72,7 @@ const styles = theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        marginTop: '4%'
+        marginTop: '18px'
     },
     formControls: {
         margin: theme.spacing.unit,
@@ -89,13 +88,15 @@ const ContentRadio = styled.div`
 `;
 
 const ContentDate = styled.div`
-    margin-top: 3%;
+    
 `;
 
 const ReserveText = styled.h4`
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 2%;
+    margin-top: 1%;
+    margin-left: 10%;
 `;
 
 const HRLineBTM = styled.hr`
@@ -171,9 +172,6 @@ class Booking extends Component {
                                 </RadioGroup>
                             </FormControl>
                         </ContentRadio>
-
-                    </Content>
-                    <Content>
                         <ContentDate>
                             <ReserveText>จองวันที่</ReserveText>
                             <DialogContent>

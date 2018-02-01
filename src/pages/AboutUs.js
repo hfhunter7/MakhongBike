@@ -94,6 +94,25 @@ class AboutUs extends Component {
     render() {
         const { classes } = this.props;
 
+        const images = [
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam1.jpg?alt=media&token=4ee1c3c6-00ad-4160-81a5-3188ed2547cc' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam2.jpg?alt=media&token=50c781c9-ac18-49eb-9370-c60e3a9e07a8' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam3.jpg?alt=media&token=397f32a0-77c0-49d5-a12c-d02d2001d74a' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam4.jpg?alt=media&token=0d886438-2922-4413-b981-f022e145eec4' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam5.jpg?alt=media&token=cdae63b6-9692-4094-b837-8638f591cfd8' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam6.jpg?alt=media&token=453e207f-aab4-425f-be67-8c331f65bbd6' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam7.jpg?alt=media&token=65b9ea71-b41f-4977-838e-b87231e1671c' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam8.jpg?alt=media&token=689a6426-5138-43a9-a2e3-e3ae933d1e98' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam9.JPG?alt=media&token=47625d66-648a-4dcd-add6-47ea85b348a2' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam10.jpg?alt=media&token=eb070a2b-a872-42f2-893f-a6b791d53d38' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam11.jpg?alt=media&token=08a9f687-1453-473b-9052-bb91b4c2541a' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam12.jpg?alt=media&token=de7d58e1-adce-4b5b-8706-1ef56f6d960c' },
+        ];
+
+        const image_show = [
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam10.jpg?alt=media&token=eb070a2b-a872-42f2-893f-a6b791d53d38' },
+        ];
+
         return (
             <Container>
                 <Header {...this.props}/>
@@ -101,7 +120,7 @@ class AboutUs extends Component {
                     <TitleDashBoard>ทีมของเรา</TitleDashBoard>
                     <HRLine/>
                     <Content>
-                        <ImageSlide />
+                        <ImageSlide light_box_image={images} show_image={image_show}/>
                     </Content>
                     <HRLine/>
 
