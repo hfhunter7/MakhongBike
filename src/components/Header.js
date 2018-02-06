@@ -56,7 +56,7 @@ class Header extends Component {
 
     handleClickLogin = () => {
         this.props.history.push('/login')
-    }
+    };
 
 	handleLogout = () => {
 		this.setState({ open: false, showLoading: true });
@@ -109,7 +109,7 @@ class Header extends Component {
 									Contact
 								</Button>
 								<Profile handleClickProfile={this.handleClickProfile}{...this.props}
-										 image_url={this.props.user.image_url}/>
+										 image_url="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png"/>
 								<Popover
 									open={this.state.open}
 									anchorEl={this.state.anchorEl}

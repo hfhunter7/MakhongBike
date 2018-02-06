@@ -22,7 +22,7 @@ import {
     ProfileInformationName,
 } from '../style-js/Profile.style'
 import EditProfileDialog from "../components/shared/EditProfileDialog";
-import { updateProfileTrainer, addBank } from "../actions/actionCreators";
+import { updateProfileTrainer } from "../actions/actionCreators";
 import Loading from "../components/Loading";
 
 class MyProfile extends Component {
@@ -71,12 +71,6 @@ class MyProfile extends Component {
     handleSaveProfile = ( data ) => {
         this.props.updateProfileTrainer(data);
         this.setState({ open_edit_profile: false });
-    };
-
-    handleSaveAccount = ( data ) => {
-        this.props.addBank(data);
-        this.setState({ open: false, showLoading: true });
-        this.setState({ open_edit_address: false });
     };
 
     render() {
@@ -224,11 +218,9 @@ function mapStateToProps( state ) {
 
 const mapDispatchToProps = {
     updateProfileTrainer: updateProfileTrainer,
-    addBank: addBank,
 };
 
 MyProfile.propTypes = {
     updateProfileTrainer: PropTypes.func.isRequired,
-    addBank: PropTypes.func.isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

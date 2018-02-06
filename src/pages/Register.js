@@ -4,11 +4,13 @@ import Header from "../components/Header";
 import { connect } from 'react-redux';
 import { Container, Row } from "../style-js/Grid.style";
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
 import TextField from 'material-ui/TextField';
 import Button from "material-ui/Button";
+import { registerUser } from "../actions/actionCreators";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -54,6 +56,7 @@ const TextInput = styled(TextField)`
     width: 45%;
     margin-bottom: 1%;
     display: flex !important;
+    margin-top: 1% !important;
 `;
 
 const ButtonRegister = styled(Button)`
@@ -70,6 +73,46 @@ const HRLineBTM = styled.hr`
 `;
 
 class Register extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            username: '',
+            password: '',
+            confirm_password: '',
+            name: '',
+            email: '',
+            phone_number: ''
+        }
+    }
+
+    updateStateByKeyHandler = (key) => {
+        return (e) => {
+            this.setState({
+                [key]: e.target.value
+            })
+        }
+    };
+
+    handleClickRegister = () => {
+        let pass;
+
+        if(this.state.confirm_password === this.state.password){
+            pass = this.state.password;
+        }
+
+        const data = {
+            username: this.state.username,
+            password: pass,
+            name: this.state.name,
+            email: this.state.email,
+            phone_number: this.state.phone_number
+        };
+        console.log(data);
+
+        this.props.registerUser(data);
+    };
+
     render() {
         return (
             <Container>
@@ -83,36 +126,48 @@ class Register extends Component {
                                 id="username"
                                 label="Username"
                                 placeholder="username"
+                                onChange={this.updateStateByKeyHandler('username')}
                             />
                             <TextInput
                                 id="password"
                                 label="Password"
                                 placeholder="password"
                                 type="password"
+                                onChange={this.updateStateByKeyHandler('password')}
                             />
                             <TextInput
                                 id="confirm-password"
                                 label="Confirm Password"
                                 placeholder="confirm password"
                                 type="password"
+                                onChange={this.updateStateByKeyHandler('confirm_password')}
                             />
                             <TextInput
                                 id="name"
                                 label="Name"
                                 placeholder="Eden Hazard"
+                                onChange={this.updateStateByKeyHandler('name')}
                             />
                             <TextInput
                                 id="email"
                                 label="Email"
                                 placeholder="abc@abc.com"
+                                onChange={this.updateStateByKeyHandler('email')}
                             />
                             <TextInput
                                 id="tel"
                                 label="Phone Number"
                                 placeholder="xxx-xxx-xxxx"
+                                onChange={this.updateStateByKeyHandler('phone_number')}
                             />
                         </ContentForm>
-                        <ButtonRegister raised color="primary">Register</ButtonRegister>
+                        <ButtonRegister
+                            raised
+                            color="primary"
+                            onClick={this.handleClickRegister}
+                        >
+                            Register
+                        </ButtonRegister>
                     </Content>
                     <HRLineBTM/>
                     <Footer/>
@@ -123,7 +178,9 @@ class Register extends Component {
     }
 }
 
-Register.defaultProps = {};
+Register.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+};
 
 function mapStateToProps( state ) {
     return {
@@ -131,6 +188,8 @@ function mapStateToProps( state ) {
     }
 }
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    registerUser: registerUser
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

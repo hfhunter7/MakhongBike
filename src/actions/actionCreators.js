@@ -6,6 +6,7 @@ import {
 import {
     UPDATE_USER
 } from "./types";
+import { create_user, login_user_password } from "./register/registerAction";
 
 
 export function update_user( user ) {
@@ -22,6 +23,12 @@ export function update_user( user ) {
 export function loginGoogle( userParams = {} ) {
     return function ( dispatch ) {
         login_user(userParams, dispatch, update_user)
+    }
+}
+
+export function loginPassword( userParams = {} ) {
+    return function ( dispatch ) {
+        login_user_password(userParams, dispatch, update_user)
     }
 }
 
@@ -44,8 +51,9 @@ export function logoutUserFromAuthToken() {
     }
 }
 
-export function addBank( data ) {
+///////////////// register service //////////////////
+export function registerUser(data){
     return function ( dispatch ) {
-        add_bank(data, dispatch, update_user);
+        create_user(data , dispatch , update_user);
     }
 }

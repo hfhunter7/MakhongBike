@@ -66,7 +66,7 @@ class Dashboard extends Component {
         const image_show = [
             { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
         ];
-        console.log(images)
+
         return (
             <Container>
                 <Header {...this.props}/>
