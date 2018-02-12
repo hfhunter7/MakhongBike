@@ -79,7 +79,7 @@ class Dashboard extends Component {
                     </Content>
                     <HRLine/>
                     <ContentTextWelcome>
-                        <WelcomeText>ยินดีต้อนรับสู่เว็บไซต์ MAEKHONG BIKEE</WelcomeText>
+                        <WelcomeText>ยินดีต้อนรับสู่เว็บไซต์ MAEKHONG BIKE</WelcomeText>
                     </ContentTextWelcome>
                     <Footer/>
                 </Row>
