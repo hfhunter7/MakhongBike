@@ -98,7 +98,6 @@ class Login extends Component {
         console.log(data);
 
         this.props.loginWithUsername(data);
-        //this.props.history.push('/');
     };
 
     componentWillReceiveProps(nextProps, nextContext) {
