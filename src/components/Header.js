@@ -32,7 +32,9 @@ class Header extends Component {
 		this.state = {
 			showLoading: false,
 			ShowMenu: null,
+			ShowMenuLogin: null,
 			open: false,
+			openLogin: false,
 			open_closeQuiz: false,
 			anchorEl: null,
 			anchorOriginVertical: 'top',
@@ -49,6 +51,12 @@ class Header extends Component {
 	handleClickProfile(event) {
 		this.setState({ open: true, ShowMenu: event.currentTarget, anchorEl: findDOMNode(this.button) });
 	};
+
+    handleClickSignIn(key) {
+        return (event) => {
+            this.setState({ [key]: true, [key]: event.currentTarget, anchorEl: findDOMNode(this.button) });
+		}
+    };
 
 	handleClickMyProfile() {
 		this.props.history.push('/profile')
@@ -67,8 +75,14 @@ class Header extends Component {
 		this.props.history.push(url)
 	}
 
-	handleRequestClose = () => {
-		this.setState({ open: false })
+	handleRequestClose = (key) => {
+		return () => {
+            this.setState({ [key]: false })
+		}
+	};
+
+    handleClickLoginWithUsername = () => {
+        this.props.history.push('/loginWithUsername')
 	};
 
 	componentDidMount() {
@@ -114,7 +128,7 @@ class Header extends Component {
 									open={this.state.open}
 									anchorEl={this.state.anchorEl}
 									anchorReference={this.state.anchorReference}
-									onClose={this.handleRequestClose}
+									onClose={this.handleRequestClose('open')}
 									anchorOrigin={{
                                         vertical: "top",
                                         horizontal: "right",
@@ -162,9 +176,42 @@ class Header extends Component {
 								<Button onClick={this.handleClick.bind(this, "/register")}>
 									Register
 								</Button>
-								<ButtonLogin raised onClick={this.handleClickLogin}>
+								<ButtonLogin raised onClick={this.handleClickSignIn('openLogin','ShowMenuLogin')}>
 									Sign in
 								</ButtonLogin>
+								<Popover
+									open={this.state.openLogin}
+									anchorEl={this.state.anchorEl}
+									anchorReference={this.state.anchorReference}
+									onClose={this.handleRequestClose('openLogin')}
+									anchorOrigin={{
+                                        vertical: "top",
+                                        horizontal: "right",
+                                    }}
+									transformOrigin={{
+                                        vertical: "bottom",
+                                        horizontal: "right",
+                                    }}
+								>
+									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
+											  onClick={this.handleClickLoginWithUsername}>
+										<i className="material-icons"
+										   style={{ fontSize: "22px", paddingRight: "15px" }}>
+											person_outline</i>Login With Username
+									</MenuItem>
+									<div style={{
+                                        borderTopStyle: "solid",
+                                        borderTopWidth: "thin",
+                                        borderTopColor: "#bdc3c7"
+                                    }}>
+										<MenuItem style={{ color: "red", fontSize: "14px", letterSpacing: "0.5px" }}
+												  onClick={this.handleClickLogin}>
+											<i className="material-icons"
+											   style={{ fontSize: "22px", paddingRight: "15px" }}>
+												person_outline</i>Login With Google
+										</MenuItem>
+									</div>
+								</Popover>
 							</RightBox>
 
 					}

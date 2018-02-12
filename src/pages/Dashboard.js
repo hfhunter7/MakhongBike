@@ -57,6 +57,7 @@ const WelcomeText = styled.h1`
 `;
 
 class Dashboard extends Component {
+
     render() {
         const images = [
             { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },

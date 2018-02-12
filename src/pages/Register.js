@@ -111,6 +111,7 @@ class Register extends Component {
         console.log(data);
 
         this.props.registerUser(data);
+        alert('Register Success');
     };
 
     render() {

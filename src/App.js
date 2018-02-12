@@ -15,6 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import Register from "./pages/Register";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
 
 function handleUpdate() {
     let {
@@ -40,6 +41,7 @@ class App extends Component {
                         <Route exact path="/register" component={Register} />
                         <PrivateRoute exact path="/profile" component={MyProfile} />
                         <Route exact path="/login" component={SignIn} />
+                        <Route exact path="/loginWithUsername" component={Login} />
 
                         <Route component={NotFound}/>
                     </Switch>

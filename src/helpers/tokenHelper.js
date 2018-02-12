@@ -37,9 +37,7 @@ export function createJwtForUser(user={}){
     const u = {
         user: {
             username: user.username || "",
-            old_password: user.old_password || "",
-            new_password: user.new_password || "",
-            confirm_password: user.confirm_password || "",
+            password: user.password || "",
         }
     };
 
