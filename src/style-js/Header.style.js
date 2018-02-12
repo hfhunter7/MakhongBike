@@ -19,7 +19,7 @@ export const HeaderRow = styled.div`
 	padding: 0 16px;
 	flex-direction: row;
 	display: flex;
-	background-color: #FF9933;
+	background-color: #272727;
 	box-shadow: 0 5px 10px -3px ${props => props.shadowColor ? props.shadowColor : '#ccc'};
 	align-items: center;
 `;
@@ -71,6 +71,10 @@ export const RightBox = styled.div`
 	and (-webkit-min-device-pixel-ratio: 1) {
 		width: 300px;
 	}
+`;
+
+export const ButtonHeader = styled(Button)`
+    color: white !important;
 `;
 
 

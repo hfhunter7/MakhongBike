@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    ButtonHeader,
     ButtonLogin,
     HeaderContainer,
     HeaderRow,
@@ -7,7 +8,6 @@ import {
     RightBox,
     SearchBox
 } from "../style-js/Header.style";
-import Button from 'material-ui/Button';
 
 import Popover from 'material-ui/Popover';
 import Profile from "./Profile";
@@ -21,10 +21,10 @@ import styled from "styled-components";
 import LogoImage from '../image/maekhongbike_logo.png'
 
 const LogoStyle = styled.img`
-	background-color: #fff;
 	height: 45px;
 	border-radius: 5px;
-`
+	background: transparent;
+`;
 
 class Header extends Component {
 	constructor(props) {
@@ -110,18 +110,18 @@ class Header extends Component {
 					{
                         Object.keys(this.props.user).length !== 0 ?
 							<RightBox>
-								<Button onClick={this.handleClick.bind(this, "/")}>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/")}>
                                     Homepage
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/about-us")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/about-us")}>
                                     About us
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/booking")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/booking")}>
 									Booking
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/contact")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/contact")}>
 									Contact
-								</Button>
+								</ButtonHeader>
 								<Profile handleClickProfile={this.handleClickProfile}{...this.props}
 										 image_url="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png"/>
 								<Popover
@@ -161,21 +161,21 @@ class Header extends Component {
 							</RightBox>
                             :
 							<RightBox>
-								<Button onClick={this.handleClick.bind(this, "/")}>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/")}>
 									Homepage
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/about-us")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/about-us")}>
 									About us
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/booking")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/booking")}>
 									Booking
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/contact")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/contact")}>
 									Contact
-								</Button>
-								<Button onClick={this.handleClick.bind(this, "/register")}>
+								</ButtonHeader>
+								<ButtonHeader onClick={this.handleClick.bind(this, "/register")}>
 									Register
-								</Button>
+								</ButtonHeader>
 								<ButtonLogin raised onClick={this.handleClickSignIn('openLogin','ShowMenuLogin')}>
 									Sign in
 								</ButtonLogin>
