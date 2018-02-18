@@ -139,10 +139,16 @@ class Header extends Component {
                                     }}
 								>
 									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
-											  onClick={this.handleClickMyProfile.bind(this)}>
+											  onClick={this.handleClick.bind(this, "/profile")}>
 										<i className="material-icons"
 										   style={{ fontSize: "22px", paddingRight: "15px" }}>
 											person_outline</i>My Profile
+									</MenuItem>
+									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
+											  onClick={this.handleClick.bind(this, "/reserve-history")}>
+										<i className="material-icons"
+										   style={{ fontSize: "22px", paddingRight: "15px" }}>
+											history</i>Reserve History
 									</MenuItem>
 									<div style={{
                                         borderTopStyle: "solid",
@@ -166,9 +172,6 @@ class Header extends Component {
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/about-us")}>
 									About us
-								</ButtonHeader>
-								<ButtonHeader onClick={this.handleClick.bind(this, "/booking")}>
-									Booking
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/contact")}>
 									Contact

@@ -1,7 +1,6 @@
 import { apiUrl } from '../../helpers/urlHelper';
 import { createJwtFromToken } from '../../helpers/tokenHelper';
 
-import { current_user_storage, privateLoginFunction } from '../../helpers/sessionHelper';
 import history from '../../history';
 const defaultUrl = apiUrl[ process.env.NODE_ENV ];
 

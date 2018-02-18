@@ -22,6 +22,8 @@ import Checkbox from 'material-ui/Checkbox';
 import Button from "material-ui/Button";
 import ImageSlide from "../components/ImageSlide";
 import ConfirmDialog from "../components/shared/ConfirmDialog";
+import { getEquipments } from "../actions/actionCreators";
+import Loading from "../components/Loading";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -132,7 +134,7 @@ const TextTrip = styled.h3`
 `;
 
 class Booking extends Component {
-    constructor(props) {
+    constructor( props ) {
         super(props);
 
         this.state = {
@@ -148,7 +150,8 @@ class Booking extends Component {
             acc_bike: '',
             acc_hat: '',
             acc_suit: '',
-            openDialog: false
+            openDialog: false,
+            showLoading: true,
         }
     }
 
@@ -205,15 +208,30 @@ class Booking extends Component {
     handleCheckReserve = () => {
         let disabled = false;
 
-        if(this.state.item === 'นำอุปกรณ์มาเอง'){
+        if (this.state.item === 'นำอุปกรณ์มาเอง') {
             disabled = true;
         }
 
         return disabled;
     };
 
+    componentWillMount() {
+        this.props.getEquipments();
+    }
+
+
+    componentWillReceiveProps( nextProps, nextContext ) {
+        if(nextProps.equipments !== this.props.equipments){
+            this.setState({
+                showLoading: false,
+            })
+        }
+    }
+
 
     render() {
+        if (this.state.showLoading) return <Loading />;
+
         const { classes } = this.props;
 
         const images = [
@@ -419,6 +437,7 @@ class Booking extends Component {
                                acc_bike={this.state.acc_bike}
                                acc_hat={this.state.acc_hat}
                                acc_suit={this.state.acc_suit}
+                               equipments={this.props.equipments}
                 />
             </Container>
         );
@@ -427,14 +446,18 @@ class Booking extends Component {
 
 function mapStateToProps( state ) {
     return {
-        user: state.user
+        user: state.user,
+        equipments: state.equipments
     }
 }
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    getEquipments: getEquipments
+};
 
 Booking.propTypes = {
     classes: PropTypes.object.isRequired,
+    getEquipments: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Booking));

@@ -16,6 +16,8 @@ import Register from "./pages/Register";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import ReserveHistory from "./pages/ReserveHistory";
+import ReserveHistoryDetail from "./pages/ReserveHistoryDetail";
 
 function handleUpdate() {
     let {
@@ -42,7 +44,8 @@ class App extends Component {
                         <PrivateRoute exact path="/profile" component={MyProfile} />
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/loginWithUsername" component={Login} />
-
+                        <Route exact path="/reserve-history" component={ReserveHistory} />
+                        <Route exact path="/reserve-history/:id" component={ReserveHistoryDetail} />
                         <Route component={NotFound}/>
                     </Switch>
                 </div>

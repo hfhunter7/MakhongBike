@@ -3,17 +3,14 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
-import Select from 'material-ui/Select';
 import Dialog, {
     DialogActions,
     DialogContent,
 
 } from 'material-ui/Dialog';
 import styled from 'styled-components'
-import { create_exam } from "../../actions/actionCreators";
 import { withMobileDialog, } from 'material-ui/Dialog';
-
+import { reserveTrip } from "../../actions/actionCreators";
 
 const ConfirmDialogContainer = styled.div`
 	z-index: 99999;
@@ -66,11 +63,48 @@ class ConfirmDialog extends Component {
 
         this.state = {
             accessory: '',
+            equipments: []
         }
     }
 
     handleClick = () => {
         this.props.handleRequestClose();
+    };
+
+    handleClickOk = () => {
+
+        let data_equipment = [];
+
+        for(let equipment of this.props.equipments){
+            let data_acc = {
+                equipment_id: ''
+            }
+            if(equipment.name === this.props.acc_bike){
+                data_acc.equipment_id = equipment.id;
+                data_equipment.push(data_acc)
+            }else if(equipment.name === this.props.acc_hat){
+                data_acc.equipment_id = equipment.id;
+                data_equipment.push(data_acc)
+            }else if(equipment.name === this.props.acc_suit){
+                data_acc.equipment_id = equipment.id;
+                data_equipment.push(data_acc)
+            }
+        }
+
+        console.log(data_equipment)
+
+        const data = {
+            reserve_date: this.props.trip_date,
+            route: this.props.trip,
+            adult: this.props.adult,
+            child: this.props.child,
+            rent_status: this.props.item,
+            reserveEquipments: data_equipment
+        }
+
+        console.log(data)
+
+        this.props.reserveTrip(data);
     };
 
     render() {
@@ -132,6 +166,7 @@ class ConfirmDialog extends Component {
                         <Button
                             color="primary"
                             autoFocus
+                            onClick={this.handleClickOk}
                         >
                             {this.props.confirmText || 'OK'}
                         </Button>
@@ -144,6 +179,7 @@ class ConfirmDialog extends Component {
 
 ConfirmDialog.propTypes = {
     fullScreen: PropTypes.bool.isRequired,
+    reserveTrip: PropTypes.func.isRequired
 };
 
 function mapStateToProps( state ) {
@@ -152,6 +188,8 @@ function mapStateToProps( state ) {
     }
 }
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    reserveTrip:reserveTrip
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withMobileDialog()(ConfirmDialog)));

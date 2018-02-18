@@ -8,7 +8,10 @@ import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const defaultState = {
-    user: {}
+    user: {},
+    equipments: {},
+    reserve: [],
+    reserve_detail:{}
 };
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools(applyMiddleware(thunk)));
