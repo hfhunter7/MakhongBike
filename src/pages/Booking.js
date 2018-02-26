@@ -187,7 +187,6 @@ class Booking extends Component {
     };
 
     handleRequestCloseDialog = () => {
-
         this.setState({
             openDialog: false,
         });
@@ -219,9 +218,8 @@ class Booking extends Component {
         this.props.getEquipments();
     }
 
-
     componentWillReceiveProps( nextProps, nextContext ) {
-        if(nextProps.equipments !== this.props.equipments){
+        if(nextProps.equipments !== this.props.equipments ){
             this.setState({
                 showLoading: false,
             })

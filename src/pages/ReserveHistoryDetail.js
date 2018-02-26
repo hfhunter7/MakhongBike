@@ -53,7 +53,7 @@ class ReserveHistoryDetail extends Component {
                 showLoading: false,
                 equipments: nextProps.reserve_detail.equipments,
                 summary: summary,
-                count: parseInt(nextProps.reserve_detail.child) + parseInt(nextProps.reserve_detail.adult)
+                count: parseInt(nextProps.reserve_detail.child , 10) + parseInt(nextProps.reserve_detail.adult , 10)
             })
         }
     }

@@ -26,7 +26,7 @@ export function create_reserve( data, dispatch, update_reserve ) {
         })
         .then(
             function ( json ) {
-                console.log(json)
+                console.log(json);
                 dispatch(update_reserve);
                 history.replace('/reserve-history');
             });

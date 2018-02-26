@@ -66,8 +66,7 @@ class ReserveHistory extends Component {
         if (this.state.showLoading) return <Loading/>;
         return (
             <Container>
-                <Header NotshowSearch
-                        {...this.props}/>
+                <Header {...this.props}/>
                 <Row>
                     {
                         this.props.reserve.length > 0 ?

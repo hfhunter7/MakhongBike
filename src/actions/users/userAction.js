@@ -51,14 +51,14 @@ export function login_with_username( userInfoParams = {}, dispatch, update_user 
         .then(function ( response ) {
             if (response.status >= 400) {
                 response.json().then(function ( errors ) {
-
+                    alert('username and password do not match Please try again');
                 });
+                history.replace('/loginWithUsername');
                 // throw new Error("Bad response from server");
             }
             return response.json()
         })
         .then(function ( json ) {
-            console.log(json)
             privateLoginFunction(json, dispatch, update_user);
             // browserHistory.push(`/`);
             //history.replace('/');
@@ -70,7 +70,7 @@ export function logout_user( dispatch, update_user ) {
     const user_storage = current_user_storage();
     const auth_token = user_storage.auth_token;
 
-    fetch(defaultUrl + `/login/logout/trainer`,
+    fetch(defaultUrl + `/login/logout/user`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -91,7 +91,6 @@ export function logout_user( dispatch, update_user ) {
             dispatch(update_user({}));
             logout_user_storage();
             history.replace('/');
-
         });
 }
 

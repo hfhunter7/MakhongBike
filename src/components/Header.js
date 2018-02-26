@@ -14,7 +14,7 @@ import Profile from "./Profile";
 import { MenuItem } from "material-ui/Menu";
 import { findDOMNode } from 'react-dom';
 import { connect } from "react-redux";
-import { loginUserFromAuthToken, logoutUserFromAuthToken } from "../actions/actionCreators";
+import { loginUsernameFromAuthToken, logoutUserFromAuthToken } from "../actions/actionCreators";
 import { current_user_storage, isLoggedIn_storage } from "../helpers/sessionHelper";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
@@ -30,7 +30,7 @@ class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			showLoading: false,
+			showLoading: true,
 			ShowMenu: null,
 			ShowMenuLogin: null,
 			open: false,
@@ -92,12 +92,12 @@ class Header extends Component {
 			const auth_token = user_storage.auth_token;
 
 			if (Object.keys(user).length === 0 && user.constructor === Object) {
-				this.props.loginUserFromAuthToken(auth_token);
+				this.props.loginUsernameFromAuthToken(auth_token);
 			}
 		}
 	}
 
-	render() {
+    render() {
 		return (
 			<HeaderContainer>
 				<HeaderRow>
@@ -179,44 +179,10 @@ class Header extends Component {
 								<ButtonHeader onClick={this.handleClick.bind(this, "/register")}>
 									Register
 								</ButtonHeader>
-								<ButtonLogin raised onClick={this.handleClickSignIn('openLogin','ShowMenuLogin')}>
+								<ButtonLogin raised onClick={this.handleClickLoginWithUsername}>
 									Sign in
 								</ButtonLogin>
-								<Popover
-									open={this.state.openLogin}
-									anchorEl={this.state.anchorEl}
-									anchorReference={this.state.anchorReference}
-									onClose={this.handleRequestClose('openLogin')}
-									anchorOrigin={{
-                                        vertical: "top",
-                                        horizontal: "right",
-                                    }}
-									transformOrigin={{
-                                        vertical: "bottom",
-                                        horizontal: "right",
-                                    }}
-								>
-									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
-											  onClick={this.handleClickLoginWithUsername}>
-										<i className="material-icons"
-										   style={{ fontSize: "22px", paddingRight: "15px" }}>
-											person_outline</i>Login With Username
-									</MenuItem>
-									<div style={{
-                                        borderTopStyle: "solid",
-                                        borderTopWidth: "thin",
-                                        borderTopColor: "#bdc3c7"
-                                    }}>
-										<MenuItem style={{ color: "red", fontSize: "14px", letterSpacing: "0.5px" }}
-												  onClick={this.handleClickLogin}>
-											<i className="material-icons"
-											   style={{ fontSize: "22px", paddingRight: "15px" }}>
-												person_outline</i>Login With Google
-										</MenuItem>
-									</div>
-								</Popover>
 							</RightBox>
-
 					}
 				</HeaderRow>
 			</HeaderContainer>
@@ -234,7 +200,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-	loginUserFromAuthToken: loginUserFromAuthToken,
+    loginUsernameFromAuthToken: loginUsernameFromAuthToken,
 	logoutUserFromAuthToken: logoutUserFromAuthToken
 };
 

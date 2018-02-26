@@ -18,7 +18,7 @@ class PrivateRoute extends Component {
 			const auth_token = user_storage.auth_token;
 
 			if(Object.keys(user).length === 0 && user.constructor === Object){
-				this.props.loginUserFromAuthToken(auth_token);
+				this.props.loginUsernameFromAuthToken(auth_token);
 			}
 			return true
 		} else {
