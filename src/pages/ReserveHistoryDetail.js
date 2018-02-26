@@ -70,7 +70,7 @@ class ReserveHistoryDetail extends Component {
                 <Row>
                     <PurchaseContainer>
                         <PurchaseHeader>
-                            <DetailOrderNumber>{`หมายเลขการจอง: ${this.props.reserve_detail.id}`}</DetailOrderNumber><br/>
+                            <DetailOrderNumber>{`หมายเลขการจอง: ${this.props.reserve_detail.reserve_number}`}</DetailOrderNumber><br/>
                             <PurchaseTitlelift>{`ชื่อผู้จอง: ${this.props.reserve_detail.user.name}`}</PurchaseTitlelift><br/>
                             <BillAddress>{`อีเมล: ${this.props.reserve_detail.user.email}`}</BillAddress>
                             <DetailDate>{`วันที่จอง: ${this.props.reserve_detail.reserve_date}`}</DetailDate><br/>

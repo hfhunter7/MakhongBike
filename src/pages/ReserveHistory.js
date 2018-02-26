@@ -80,7 +80,7 @@ class ReserveHistory extends Component {
                                             <PurchaseBoxHeaderMenuHistory>
                                                 <NumberHistory> # </NumberHistory>
                                                 <OrderDateTime> ผู้จอง</OrderDateTime>
-                                                <OrderNumber> วันที่จอง </OrderNumber>
+                                                <OrderNumber> วันที่จอง (ปี/เดือน/วัน) </OrderNumber>
                                                 <PaidWith> เส้นทาง</PaidWith>
                                                 <OrderTotal> สถานะการเช่าอุปกรณ์</OrderTotal>
                                             </PurchaseBoxHeaderMenuHistory>
@@ -111,7 +111,7 @@ class ReserveHistory extends Component {
                             :
                             < PurchaseEmpty >
                                 < IconEmpty name="history"/>
-                                <PurchaseSubtitle>No Purchase</PurchaseSubtitle>
+                                <PurchaseSubtitle>No Reserve History</PurchaseSubtitle>
                             </PurchaseEmpty>
                     }
                     <Footer/>

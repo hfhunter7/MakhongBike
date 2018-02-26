@@ -40,11 +40,8 @@ export const PurchaseHeaderHistory = styled.div`
 `;
 
 export const PurchaseEmpty = styled.div`
-    top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+    margin-top: 6%;
+    margin-bottom: -5%;
 	width: 100%;
 	text-align: center;
 	padding-top: 50px;
