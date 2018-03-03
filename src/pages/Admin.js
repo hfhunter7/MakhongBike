@@ -164,13 +164,13 @@ class Admin extends Component {
                             <CertificateEmptyContainer>
                                 <IconEmpty><img src={CertificateIcon} alt=""/></IconEmpty>
                                 <CertificateEmptyTitle>
-                                    No Trip
+                                    ไม่มีทริป
                                 </CertificateEmptyTitle>
                                 <CertificateEmptySubTitle>
-                                    Create your Trip.
+                                    สร้างทริปของคุณ
                                 </CertificateEmptySubTitle>
                                 <ButtonCertificateEmpty onClick={this.handleRequestOpen}>
-                                    CREATE TRIP
+                                    เพิ่มทริป
                                 </ButtonCertificateEmpty>
                             </CertificateEmptyContainer>
 

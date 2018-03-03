@@ -70,8 +70,8 @@ class EditCourseDialog extends Component {
 						           margin="dense"
 						           id="trip-name"
 						           name="trip-name"
-						           label="Trip Name"
-						           placeholder="Enter your trip name"
+						           label="ชื่อทริป"
+						           placeholder="ระบุชื่อทริป"
 						           defaultValue={this.state.trip_name || ''}
 						           onChange={this.handleChange('trip_name')}
 						           fullWidth
@@ -81,8 +81,8 @@ class EditCourseDialog extends Component {
 							margin="dense"
 							id="description"
 							name="description"
-							label="Trip Overview"
-							placeholder="Trip description"
+							label="รายละเอียดทริป"
+							placeholder="ระบุรายละเอียดทริป"
 							defaultValue={this.state.description || ''}
 							onChange={this.handleChange('description')}
 							fullWidth

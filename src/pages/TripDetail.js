@@ -46,7 +46,7 @@ import {
 
 //api
 import {
-    addTripImage,
+    addTripImage, deleteTrip, deleteTripImage,
     editImageTrip, editTrip,
     getTripById,
 } from '../actions/actionCreators'
@@ -288,7 +288,14 @@ class TripDetail extends Component {
     };
 
     deleteTrip = (id) => {
-        console.log(id)
+        console.log('trip : '+id)
+
+        this.props.deleteTrip(id);
+    };
+
+    handleDeleteTripImage = (trip_image_id) => {
+        console.log('trip image : '+trip_image_id)
+        this.props.deleteTripImage(trip_image_id);
     };
 
     render() {
@@ -381,19 +388,20 @@ class TripDetail extends Component {
                                                     return <ListImageView key={index}
                                                                           id={image.id}
                                                                           image_url={image.image_url}
+                                                                          handleDeleteTripImage={this.handleDeleteTripImage}
                                                     />
                                                 })
                                                 :
                                                 <CertificateEmptyContainer>
                                                     <IconEmpty className="material-icons ">library_add</IconEmpty>
                                                     <CertificateEmptyTitle>
-                                                        Add Image
+                                                        ไม่มีรูปภาพภายในทริป
                                                     </CertificateEmptyTitle>
                                                     <CertificateEmptySubTitle>
-                                                        Add your image for a trip.
+                                                        เพิ่มรูปภาพไปยังในทริป
                                                     </CertificateEmptySubTitle>
                                                     <ButtonCertificateEmpty onClick={this.handleClickOpenFileImage}>
-                                                        ADD IMAGE
+                                                        เพิ่มรูปภาพ
                                                     </ButtonCertificateEmpty>
                                                 </CertificateEmptyContainer>
                                         }
@@ -439,14 +447,18 @@ TripDetail.propTypes = {
     getTripById: PropTypes.func.isRequired,
     editImageTrip: PropTypes.func.isRequired,
     editTrip: PropTypes.func.isRequired,
-    addTripImage: PropTypes.func.isRequired
+    addTripImage: PropTypes.func.isRequired,
+    deleteTripImage: PropTypes.func.isRequired,
+    deleteTrip: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
     getTripById: getTripById,
     editImageTrip: editImageTrip,
     editTrip: editTrip,
-    addTripImage: addTripImage
+    addTripImage: addTripImage,
+    deleteTrip: deleteTrip,
+    deleteTripImage: deleteTripImage
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TripDetail));

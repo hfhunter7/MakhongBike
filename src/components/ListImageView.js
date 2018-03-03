@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { SpanDelete } from "../style-js/CourseDetail.style";
+import ConfirmDeleteImageDialog from "./shared/ConfirmDeleteImageDialog";
 
 const GridBoxImage = styled.div`
 	position: relative;
@@ -52,10 +54,22 @@ class ListImageView extends Component {
         super();
 
         this.state = {
-            openDeleteCourseCertificateDialog: false,
-            course_id:''
+            openDeleteDialog: false,
+            course_id: '',
         }
     }
+
+    onDelete = () => {
+        this.setState({
+            openDeleteDialog: true
+        })
+    };
+
+    handleRequestClose = () => {
+        this.setState({
+            openDeleteDialog: false
+        })
+    };
 
     render() {
         //console.log(Object.keys(this.props.user).length)
@@ -66,8 +80,17 @@ class ListImageView extends Component {
                         <div className="image-grid-box" onClick={this.props.onClick} data-id={this.props.id}>
                             <GridBoxImage image_url={this.props.image_url}/>
                         </div>
+                        <SpanDelete className="material-icons" onClick={this.onDelete}>clear</SpanDelete>
                     </div>
                 </div>
+                <ConfirmDeleteImageDialog open={this.state.openDeleteDialog}
+                                          handleRequestClose={this.handleRequestClose}
+                                          handleDeleteTripImage={this.props.handleDeleteTripImage}
+                                          confirmText="ok"
+                                          headerText="Delete Image"
+                                          descriptionText={`Do you want to delete image ?`}
+                                          image_id={this.props.id}
+                />
             </GridBoxContainer>
         );
     }

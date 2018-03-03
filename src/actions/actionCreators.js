@@ -12,7 +12,7 @@ import { create_user } from "./register/registerAction";
 import { fetch_equipments } from "./equipment/equipmentAction";
 import { create_reserve, fetch_reserve_detail, fetch_reserves } from "./reserve/reserveAction";
 import {
-    add_trip_image, create_trip, edit_image_trip, edit_trip, fetch_trip_detail,
+    add_trip_image, create_trip, delete_trip, delete_trip_image, edit_image_trip, edit_trip, fetch_trip_detail,
     fetch_trips
 } from "./trip/tripAction";
 
@@ -169,5 +169,17 @@ export function editTrip(id,data){
 export function addTripImage(id,data){
     return function ( dispatch ) {
         add_trip_image(id,data , dispatch , update_trip_detail);
+    }
+}
+
+export function deleteTrip(id){
+    return function ( dispatch ) {
+        delete_trip(id , dispatch , update_trip);
+    }
+}
+
+export function deleteTripImage(id){
+    return function ( dispatch ) {
+        delete_trip_image(id , dispatch , update_trip_detail);
     }
 }

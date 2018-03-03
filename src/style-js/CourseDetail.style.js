@@ -472,3 +472,11 @@ export const IconUploadImage = styled(Icon)`
 	cursor: pointer;
 	font-size: 150px;
 `;
+
+export const SpanDelete = styled.span`
+    z-index: 9999;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+`;

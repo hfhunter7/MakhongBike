@@ -12,7 +12,7 @@ class AddNewTrip extends Component {
         super(props)
         this.state = {
             trip_name: '',
-            description:''
+            description: ''
         }
     }
 
@@ -38,22 +38,21 @@ class AddNewTrip extends Component {
         return (
             <div>
                 <Dialog open={this.props.open}>
-                    <DialogTitle>Add Trip</DialogTitle>
+                    <DialogTitle>สร้างทริปของคุณ</DialogTitle>
                     <DialogContent>
                         <TextField autoFocus
                                    required
                                    margin="dense"
                                    id="trip_name"
                                    name="trip_name"
-                                   placeholder="Please enter Trip Name"
+                                   placeholder="ระบุชื่อทริป"
                                    onChange={this.handleChange('trip_name')}
                                    fullWidth/>
-                        <TextField autoFocus
-                                   required
+                        <TextField required
                                    margin="dense"
                                    id="description"
                                    name="description"
-                                   placeholder="Please enter description"
+                                   placeholder="ระบุรายละเอียดการเดินทางของทริป"
                                    onChange={this.handleChange('description')}
                                    fullWidth/>
                     </DialogContent>
