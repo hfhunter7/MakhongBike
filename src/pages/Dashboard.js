@@ -61,7 +61,7 @@ class Dashboard extends Component {
     render() {
         const images = [
             { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic2.jpg?alt=media&token=f3790c70-5f91-47c9-b56e-60063d6f3a31' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/homepage2.jpg?alt=media&token=b3351cc1-2658-41f1-9319-eb4cd84cbde0' },
         ];
 
         const image_show = [

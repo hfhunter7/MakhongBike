@@ -18,6 +18,8 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import ReserveHistory from "./pages/ReserveHistory";
 import ReserveHistoryDetail from "./pages/ReserveHistoryDetail";
+import Admin from "./pages/Admin";
+import TripDetail from "./pages/TripDetail";
 
 function handleUpdate() {
     let {
@@ -44,8 +46,10 @@ class App extends Component {
                         <PrivateRoute exact path="/profile" component={MyProfile} />
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/loginWithUsername" component={Login} />
-                        <Route exact path="/reserve-history" component={ReserveHistory} />
-                        <Route exact path="/reserve-history/:id" component={ReserveHistoryDetail} />
+                        <PrivateRoute exact path="/admin" component={Admin} />
+                        <PrivateRoute exact path="/trip/:id" component={TripDetail} />
+                        <PrivateRoute exact path="/reserve-history" component={ReserveHistory} />
+                        <PrivateRoute exact path="/reserve-history/:id" component={ReserveHistoryDetail} />
                         <Route component={NotFound}/>
                     </Switch>
                 </div>

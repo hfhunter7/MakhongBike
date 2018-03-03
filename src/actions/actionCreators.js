@@ -5,12 +5,16 @@ import {
 
 //////////////////////////// User Action ////////////////////////////
 import {
-    FETCH_EQUIPMENT, FETCH_RESERVE, FETCH_RESERVE_DETAIL,
+    FETCH_EQUIPMENT, FETCH_RESERVE, FETCH_RESERVE_DETAIL, FETCH_TRIP, FETCH_TRIP_DETAIL,
     UPDATE_USER
 } from "./types";
 import { create_user } from "./register/registerAction";
 import { fetch_equipments } from "./equipment/equipmentAction";
 import { create_reserve, fetch_reserve_detail, fetch_reserves } from "./reserve/reserveAction";
+import {
+    add_trip_image, create_trip, edit_image_trip, edit_trip, fetch_trip_detail,
+    fetch_trips
+} from "./trip/tripAction";
 
 
 export function update_user( user ) {
@@ -113,5 +117,57 @@ export function update_reserves_detail( reserve_detail ) {
 export function getReservesDetail(id) {
     return function ( dispatch ) {
         fetch_reserve_detail(id,dispatch, update_reserves_detail);
+    }
+}
+
+///////////////////// trip service //////////////////////
+
+export function update_trip( trip ) {
+    return {
+        type: FETCH_TRIP,
+        trip
+    }
+}
+
+export function update_trip_detail( trip_detail ) {
+    return {
+        type: FETCH_TRIP_DETAIL,
+        trip_detail
+    }
+}
+
+export function getTrips() {
+    return function ( dispatch ) {
+        fetch_trips(dispatch, update_trip);
+    }
+}
+
+export function createTrip(data){
+    return function ( dispatch ) {
+        create_trip(data , dispatch , update_trip);
+    }
+}
+
+export function getTripById(id) {
+    return function ( dispatch ) {
+        fetch_trip_detail(id,dispatch, update_trip_detail);
+    }
+}
+
+export function editImageTrip(id,data){
+    return function ( dispatch ) {
+        edit_image_trip(id,data , dispatch , update_trip_detail);
+    }
+}
+
+export function editTrip(id,data){
+    return function ( dispatch ) {
+        edit_trip(id,data , dispatch , update_trip_detail);
+    }
+}
+
+export function addTripImage(id,data){
+    return function ( dispatch ) {
+        add_trip_image(id,data , dispatch , update_trip_detail);
     }
 }

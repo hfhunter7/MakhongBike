@@ -95,7 +95,7 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         };
-        console.log(data);
+        //console.log(data);
 
         this.props.loginWithUsername(data);
     };
@@ -103,7 +103,11 @@ class Login extends Component {
     componentWillReceiveProps(nextProps, nextContext) {
         if (this.props.user !== nextProps.user) {
             //console.log('login page :: user is login success redirect to home page')
-            this.props.history.push('/');
+            if(nextProps.user.username === 'admin'){
+                this.props.history.push('/admin');
+            }else{
+                this.props.history.push('/');
+            }
         }
     }
 

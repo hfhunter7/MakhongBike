@@ -139,8 +139,7 @@ class EditBankAccount extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <Dialog ignoreBackdropClick
-                        ignoreEscapeKeyUp
+                <Dialog
                         open={this.props.open}
                         onClose={this.props.handleRequestClose}>
                     <DialogTitle>Add Bank Account</DialogTitle>

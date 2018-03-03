@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from 'material-ui/Button'
 
 export const CertificateEmptyContainer = styled.div`
  width: 100%;
@@ -16,6 +17,30 @@ export const IconEmpty = styled.div`
  font-size: 100px;
  color: gray;
  margin-bottom: 30px;
+`;
+
+export const CertificatesDetailContent = styled.div`
+
+`;
+
+export const DetailContentHeader = styled.div`
+	display: flex;
+	height: 50px;
+	width: 100%;
+	align-items: center;
+	border: 1px solid #ebebeb;
+`;
+
+export const ButtonAdd = styled(Button)`
+    margin-left: 65% !important;
+`;
+
+export const DetailContentBody = styled.div`
+ 	width: 100%;
+ 	height: auto;
+ 	align-items: center;
+	border: 1px solid #ebebeb;
+	background-color: #ffffff;
 `;
 
 export const CertificateEmptyTitle = styled.div`

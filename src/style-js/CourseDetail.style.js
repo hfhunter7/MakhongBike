@@ -18,7 +18,7 @@ export const CourseInformation = styled.div`
 `;
 
 export const CourseContent = styled.div`
-	padding: 20px 150px;
+	padding: 20px 30px;
 	display: flex;
 	background-color: #fafafa;
 	@media (max-width: 767px) {

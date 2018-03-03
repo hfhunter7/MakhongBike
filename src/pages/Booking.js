@@ -22,7 +22,7 @@ import Checkbox from 'material-ui/Checkbox';
 import Button from "material-ui/Button";
 import ImageSlide from "../components/ImageSlide";
 import ConfirmDialog from "../components/shared/ConfirmDialog";
-import { getEquipments } from "../actions/actionCreators";
+import { getEquipments, getReserves } from "../actions/actionCreators";
 import Loading from "../components/Loading";
 
 const TitleDashBoard = styled.div`
@@ -152,6 +152,7 @@ class Booking extends Component {
             acc_suit: '',
             openDialog: false,
             showLoading: true,
+            alert:''
         }
     }
 
@@ -168,9 +169,19 @@ class Booking extends Component {
     };
 
     handleChangeDate = ( event ) => {
-        this.setState({
-            date: event.target.value
-        })
+        for(let r of this.props.reserve){
+            if(r.reserve_date === event.target.value){
+                this.setState({
+                    alert: 'วันนี้มีคนจองแล้ว'
+                })
+            }else{
+                this.setState({
+                    alert:'',
+                    date: event.target.value
+                })
+            }
+        }
+
     };
 
     handleChangeCheckBox = ( name, key ) => ( event ) => {
@@ -196,7 +207,7 @@ class Booking extends Component {
         let disabled = true;
 
         if ((this.state.trip !== '' && this.state.date !== '') && (this.state.adult !== '' && this.state.child !== '')) {
-            if (this.state.item !== '') {
+            if (this.state.item !== '' && this.state.alert === '') {
                 disabled = false;
             }
         }
@@ -216,6 +227,7 @@ class Booking extends Component {
 
     componentWillMount() {
         this.props.getEquipments();
+        this.props.getReserves();
     }
 
     componentWillReceiveProps( nextProps, nextContext ) {
@@ -225,7 +237,6 @@ class Booking extends Component {
             })
         }
     }
-
 
     render() {
         if (this.state.showLoading) return <Loading />;
@@ -310,7 +321,7 @@ class Booking extends Component {
                                     required
                                     type="date"
                                     id="date-local"
-                                    label="Reserve Date"
+                                    label={this.state.alert !== '' ? this.state.alert : 'Reserve Date'}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -445,17 +456,20 @@ class Booking extends Component {
 function mapStateToProps( state ) {
     return {
         user: state.user,
-        equipments: state.equipments
+        equipments: state.equipments,
+        reserve: state.reserve
     }
 }
 
 const mapDispatchToProps = {
-    getEquipments: getEquipments
+    getEquipments: getEquipments,
+    getReserves: getReserves
 };
 
 Booking.propTypes = {
     classes: PropTypes.object.isRequired,
-    getEquipments: PropTypes.func.isRequired
+    getEquipments: PropTypes.func.isRequired,
+    getReserves: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Booking));

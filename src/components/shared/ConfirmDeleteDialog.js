@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Dialog, {
     DialogActions,
     DialogContent,
 } from 'material-ui/Dialog';
 import styled from 'styled-components'
-import { deleteExam } from "../../actions/actionCreators";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -48,10 +46,8 @@ const IconEmpty = styled.div`
 
 class ConfirmDeleteDialog extends Component {
     handleDeleteExam = () => {
-        this.props.deleteExam(this.props.exam_id);
-        // this.props.handleRequestClose();
-
-        this.props.history.push('/exams');
+        this.props.handleDeleteTrip(this.props.trip_id);
+        this.props.handleRequestClose();
     };
 
     render() {
@@ -84,7 +80,7 @@ class ConfirmDeleteDialog extends Component {
 }
 
 ConfirmDeleteDialog.propTypes = {
-    deleteExam: PropTypes.func.isRequired
+
 };
 
 function mapStateToProps(state) {
@@ -94,7 +90,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    deleteExam: deleteExam
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter((ConfirmDeleteDialog)));

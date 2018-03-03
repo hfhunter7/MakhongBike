@@ -71,16 +71,22 @@ const styles = theme => ({
 });
 
 const TypographyText = styled(Typography)`
-    font-size: 16px;
+    font-size: 18px !important;
 `;
 
 const TypographyTextHeader = styled(Typography)`
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
 `;
 
+const ExpandDetail = styled(ExpansionPanelDetails)`
+    display: block !important;
+    padding: 8px 24px 24px !important;
+    flex-grow: 1 !important;
+`;
+
 class AboutUs extends Component {
-    constructor(){
+    constructor() {
         super();
 
         this.state = {
@@ -110,7 +116,7 @@ class AboutUs extends Component {
         ];
 
         const image_show = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team%2Fteam10.jpg?alt=media&token=eb070a2b-a872-42f2-893f-a6b791d53d38' },
+            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/team.jpg?alt=media&token=6b59ad23-d311-4916-acdf-8d5d853868c9' },
         ];
 
         return (
@@ -126,44 +132,48 @@ class AboutUs extends Component {
 
                     <div className={classes.root}>
                         <ExpansionPanel>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                 <TypographyTextHeader>ประวัติความเป็นมา</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <TypographyText>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                    ความเป็นมาขององค์กร
+                                    ชมรมปั่นจักรยานศึกษาธรรมชาติ(เชียงของ)
+                                    เป็นกิจการร้านอาหารเชิงพาณิชย์ที่มีลูกค้าทุกเพศทุกวัย
+                                    เป็นทริปปั่นจักรยานเชิงเที่ยวชมธรรมชาติ ความงามของอำเภอเชียงของ
+                                    ส่วนของกิจการจะเป็นชมรมจักรยานขนาดเล็ก
+                                    กลุ่มเป้าหมายในการเน้นไปที่ผู้ใช้บริการชาวต่างชาติ
+                                    ชมรมจักรยาน(เชียงของ) สร้างขึ้นเมื่อ ปีพ.ศ. 2555 แต่เดิมชมรมจักรยานนี้เคยก่อตั้งก่อนแล้วแต่ยังไม่ได้ตั้งแต่ชมรมเหมือนปัจจุบัน จะปั่นกันเป็นกลุ่มเพื่อสุขภาพเท่านั้นคนในกลุ่มจะมีผู้คนที่รักสุขภาพส่วนใหญ่ จะปั่นไปตามสถานที่ต่างๆในอำเภอเชียงของระยะทางไม่ค่อยไกลนัก ต่อมาเริ่มมีการจัดตั้งชมรมจักรยานขึ้นซึ่งใช้ชื่อว่า ชมรมจักรยาน(เชียงของ) ที่ตั้งปัจจุบัน 323 หมู่ 7 ตำบลสถาน อำเภอเชียงของ  จังหวัด เชียงราย 57140 โดยลักษณะเป็นตึกแถว2ห้องเชื่อมกัน ซึ่งเป็นจุดรวมพลก่อนจะออกไปปั่นจักรยานตามสถานที่ต่างๆพร้อมกัน
                                 </TypographyText>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                         <ExpansionPanel>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                 <TypographyTextHeader>วิสัยทัศน์</TypographyTextHeader>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <TypographyText>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                    วิสัยทัศน์และพันธกิจ
+                                    ทริปปั่นประทับใจ เข้าถึงด้วยความมั่นใจ และผู้ให้บริการมีความสุข
+                                    ความต้อการของระบบ
+                                    เพื่อโฆษณาอำเภอเชียงของให้เป็นที่รู้จักสำหรับนักท่องเที่ยวที่รักความสงบ ธรรมชาติ และความสวยงามแบบชนบท โดยกลุ่มเป้าหมายคือนักท่อเที่ยวทั่วไปที่มีใจรักธรรมชาติ ต้องการที่จะชมความงามของธรรมชาติในอำเภอเชียงของ
                                 </TypographyText>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                         <ExpansionPanel>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                 <TypographyTextHeader>ประธานชมรม</TypographyTextHeader>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <TypographyText>
-                                    <ContentPresident>
-                                        <img src={President} alt=""/>
-                                    </ContentPresident>
+                            <ExpandDetail>
+                                    <TypographyText>
+                                        <ContentPresident>
+                                            <img src={President} alt=""/>
+                                        </ContentPresident>
 
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
-                                </TypographyText>
-                            </ExpansionPanelDetails>
+                                        เจ้าของ/ผู้บริหาร
+                                        นายณรงค์พล อินต๊ะยศ (ประธานชมรมจักรยาน)
+                                    </TypographyText>
+                            </ExpandDetail>
                         </ExpansionPanel>
                     </div>
 

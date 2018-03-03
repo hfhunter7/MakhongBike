@@ -11,7 +11,9 @@ const defaultState = {
     user: {},
     equipments: {},
     reserve: [],
-    reserve_detail:{}
+    reserve_detail:{},
+    trip:[],
+    trip_detail: {}
 };
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools(applyMiddleware(thunk)));

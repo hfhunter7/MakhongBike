@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { isLoggedIn_storage, current_user_storage } from '../helpers/sessionHelper';
-import { loginUserFromAuthToken }  from '../actions/actionCreators';
+import { loginUsernameFromAuthToken } from '../actions/actionCreators';
 
 class PrivateRoute extends Component {
 	isAuthenticated() {
@@ -42,7 +42,7 @@ class PrivateRoute extends Component {
 					props => (
 						isUserAuthenticated
 							? <InnerComponent {...props} />
-							: <Redirect to={{ pathname: '/login', state: { from: location } }} />
+							: <Redirect to={{ pathname: '/loginWithUsername', state: { from: location } }} />
 					)
 				}
 			/>
@@ -57,7 +57,7 @@ PrivateRoute.propTypes = {
 	component:  PropTypes.any.isRequired,
 	path:       PropTypes.string,
 	user:       PropTypes.object.isRequired,
-	loginUserFromAuthToken: PropTypes.func.isRequired
+    loginUsernameFromAuthToken: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -67,7 +67,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-	loginUserFromAuthToken: loginUserFromAuthToken
+    loginUsernameFromAuthToken: loginUsernameFromAuthToken
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PrivateRoute));

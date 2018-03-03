@@ -75,8 +75,7 @@ class ConfirmPublishDialog extends Component {
     render() {
         return (
             <ConfirmDialogContainer>
-                        <Dialog ignorebackdropclick={this.state.value.toString().toLocaleLowerCase()}
-                                ignoreescapekeyup={this.state.value.toString().toLocaleLowerCase()}
+                        <Dialog
                             open={this.props.open}
                             onClose={this.props.handleRequestClose}>
                             <DialogContentStyle>

@@ -108,8 +108,7 @@ class ProfileNavDialog extends Component {
         const { fullScreen } = this.props;
         return (
             <ConfirmDialogContainer>
-                <Dialog ignoreBackdropClick
-                        ignoreEscapeKeyUp
+                <Dialog
                         fullScreen={fullScreen}
                         open={this.props.open}
                         onClose={this.props.handleRequestClose}>

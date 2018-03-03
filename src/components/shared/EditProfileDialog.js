@@ -79,8 +79,7 @@ class EditProfileDialog extends Component{
     render() {
         return (
             <div>
-                <Dialog ignoreBackdropClick
-                        ignoreEscapeKeyUp
+                <Dialog
                         open={this.props.open}
                         onClose={this.props.handleRequestClose}>
                     <DialogTitle>Edit Profile</DialogTitle>

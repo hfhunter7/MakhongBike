@@ -111,16 +111,16 @@ class Header extends Component {
                         Object.keys(this.props.user).length !== 0 ?
 							<RightBox>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/")}>
-                                    Homepage
+                                    หน้าแรก
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/about-us")}>
-                                    About us
+                                    ทีมของเรา
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/booking")}>
-									Booking
+									จองทริป
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/contact")}>
-									Contact
+									ติดต่อเรา
 								</ButtonHeader>
 								<Profile handleClickProfile={this.handleClickProfile}{...this.props}
 										 image_url="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png"/>
@@ -142,13 +142,13 @@ class Header extends Component {
 											  onClick={this.handleClick.bind(this, "/profile")}>
 										<i className="material-icons"
 										   style={{ fontSize: "22px", paddingRight: "15px" }}>
-											person_outline</i>My Profile
+											person_outline</i>ข้อมูลส่วนตัว
 									</MenuItem>
 									<MenuItem style={{ fontSize: "14px", letterSpacing: "0.5px" }}
 											  onClick={this.handleClick.bind(this, "/reserve-history")}>
 										<i className="material-icons"
 										   style={{ fontSize: "22px", paddingRight: "15px" }}>
-											history</i>Reserve History
+											history</i>ประวัติการจอง
 									</MenuItem>
 									<div style={{
                                         borderTopStyle: "solid",
@@ -159,7 +159,7 @@ class Header extends Component {
 												  onClick={this.handleLogout.bind(this)}>
 											<i className="material-icons"
 											   style={{ fontSize: "22px", paddingRight: "15px" }}>
-												exit_to_app</i>Sign Out
+												exit_to_app</i>ออกจากระบบ
 										</MenuItem>
 									</div>
 								</Popover>
@@ -168,19 +168,19 @@ class Header extends Component {
                             :
 							<RightBox>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/")}>
-									Homepage
+									หน้าแรก
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/about-us")}>
-									About us
+									ทีมของเรา
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/contact")}>
-									Contact
+									ติดต่อเรา
 								</ButtonHeader>
 								<ButtonHeader onClick={this.handleClick.bind(this, "/register")}>
-									Register
+									สมัครสมาชิก
 								</ButtonHeader>
 								<ButtonLogin raised onClick={this.handleClickLoginWithUsername}>
-									Sign in
+									เข้าสู่ระบบ
 								</ButtonLogin>
 							</RightBox>
 					}
