@@ -264,7 +264,7 @@ class Booking extends Component {
     enableButton() {
         let disabled = true;
 
-        if ((this.state.trip !== '' && this.state.date !== '') && (this.state.adult !== '' && this.state.child !== '')) {
+        if ((this.state.trip !== '' && this.state.date !== '') && this.state.adult !== '') {
             if ((this.state.item !== '' && this.state.alert === '') && this.state.previous_day) {
                 disabled = false;
             }
@@ -409,7 +409,7 @@ class Booking extends Component {
                                     value={this.state.child}
                                     onChange={this.handleChangeSelect('child')}
                                 >
-
+                                    <MenuItem value={0}>ไม่เลือก</MenuItem>
                                     <MenuItem value={1}>1</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
                                     <MenuItem value={3}>3</MenuItem>
