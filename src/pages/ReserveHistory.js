@@ -28,8 +28,8 @@ import {
 import { withRouter } from "react-router";
 
 import { connect } from 'react-redux';
-import Loading from '../components/Loading';
 import { getReserves } from "../actions/actionCreators";
+import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
 class ReserveHistory extends Component {
     constructor(props) {
@@ -63,7 +63,13 @@ class ReserveHistory extends Component {
     }
 
     render() {
-        if (this.state.showLoading) return <Loading/>;
+        if (this.state.showLoading)
+            return <ContainLoader>
+                <Loader
+                    color={'#0088ff'}
+                    size={75}
+                />
+            </ContainLoader>;
         return (
             <Container>
                 <Header {...this.props}/>

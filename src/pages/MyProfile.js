@@ -23,7 +23,7 @@ import {
 } from '../style-js/Profile.style'
 import EditProfileDialog from "../components/shared/EditProfileDialog";
 import { updateProfileTrainer } from "../actions/actionCreators";
-import Loading from "../components/Loading";
+import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
 class MyProfile extends Component {
 
@@ -74,7 +74,14 @@ class MyProfile extends Component {
     };
 
     render() {
-        if (Object.keys(this.props.user).length === 0) return <Loading />
+        if (Object.keys(this.props.user).length === 0)
+            return <ContainLoader>
+                <Loader
+                    color={'#0088ff'}
+                    size={75}
+                />
+            </ContainLoader>;
+
         let birthday = "";
         if (this.props.user) {
             if (this.props.user.birthday !== undefined && this.props.user.birthday !== null) {

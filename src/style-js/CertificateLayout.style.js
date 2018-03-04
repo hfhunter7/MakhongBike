@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 import Button from 'material-ui/Button'
+import { HashLoader } from 'react-spinners';
+
+export const Loader = styled(HashLoader)`
+    
+`;
+
+export const ContainLoader = styled.div`
+    margin-left: 48%;
+    margin-top: 20%;
+`;
 
 export const CertificateEmptyContainer = styled.div`
  width: 100%;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import NavBarFooter from '../components/NavBarFooter';
 import Footer from '../components/Footer';
 import { Container, Row } from '../style-js/Grid.style'
@@ -9,7 +8,7 @@ import {
     CertificateEmptyTitle,
     IconEmpty,
     CertificateEmptySubTitle,
-    ButtonCertificateEmpty,
+    ButtonCertificateEmpty, Loader, ContainLoader,
 } from '../style-js/CertificateLayout.style'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -18,9 +17,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button'
-import Loading from "../components/Loading";
+
 import { createTrip, getTrips } from "../actions/actionCreators";
 import AddNewTrip from "../components/shared/AddNewTrip";
+import HeaderAdmin from "../components/HeaderAdmin";
 
 const HRLine = styled.hr`
     margin-left: 5%;
@@ -124,13 +124,19 @@ class Admin extends Component {
         console.log(data)
 
         this.props.createTrip(data);
-    }
+    };
 
     render() {
-        if (this.state.showLoading) return <Loading/>
+        if (this.state.showLoading)
+            return <ContainLoader>
+                <Loader
+                    color={'#0088ff'}
+                    size={75}
+                />
+            </ContainLoader>;
         return (
             <Container>
-                <Header/>
+                <HeaderAdmin/>
                 <Row>
                     {
                         this.props.trip.length > 0 ?

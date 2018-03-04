@@ -5,17 +5,28 @@ import {
 
 //////////////////////////// User Action ////////////////////////////
 import {
-    FETCH_EQUIPMENT, FETCH_RESERVE, FETCH_RESERVE_DETAIL, FETCH_TRIP, FETCH_TRIP_DETAIL,
+    FETCH_ALL_RESERVE,
+    FETCH_EQUIPMENT, FETCH_RESERVE, FETCH_RESERVE_DETAIL, FETCH_TRIP, FETCH_TRIP_DETAIL, FETCH_TRIP_URL,
     UPDATE_USER
 } from "./types";
 import { create_user } from "./register/registerAction";
 import { fetch_equipments } from "./equipment/equipmentAction";
-import { create_reserve, fetch_reserve_detail, fetch_reserves } from "./reserve/reserveAction";
 import {
-    add_trip_image, create_trip, delete_trip, delete_trip_image, edit_image_trip, edit_trip, fetch_trip_detail,
-    fetch_trips
+    create_reserve, edit_status_payment, fetch_all_reserves,
+    fetch_reserve_detail,
+    fetch_reserves
+} from "./reserve/reserveAction";
+import {
+    add_trip_image,
+    create_trip,
+    delete_trip,
+    delete_trip_image,
+    edit_image_trip,
+    edit_trip,
+    fetch_trip_detail,
+    fetch_trip_images,
+    fetch_trips,
 } from "./trip/tripAction";
-
 
 export function update_user( user ) {
     return {
@@ -25,7 +36,6 @@ export function update_user( user ) {
 }
 
 ///////////////////////// User Service Action /////////////////////////
-
 
 
 export function loginGoogle( userParams = {} ) {
@@ -67,9 +77,9 @@ export function logoutUserFromAuthToken() {
 }
 
 ///////////////// register service //////////////////
-export function registerUser(data){
+export function registerUser( data ) {
     return function ( dispatch ) {
-        create_user(data , dispatch , update_user);
+        create_user(data, dispatch, update_user);
     }
 }
 
@@ -88,9 +98,9 @@ export function getEquipments() {
 }
 
 //////////////// reserve action ///////////////
-export function reserveTrip(data){
+export function reserveTrip( data ) {
     return function ( dispatch ) {
-        create_reserve(data , dispatch , update_reserves);
+        create_reserve(data, dispatch, update_reserves);
     }
 }
 
@@ -101,9 +111,28 @@ export function update_reserves( reserve ) {
     }
 }
 
+export function update_all_reserve( reserve_all ) {
+    return {
+        type: FETCH_ALL_RESERVE,
+        reserve_all
+    }
+}
+
+export function EditStatusPayment(id , data){
+    return function ( dispatch ) {
+        edit_status_payment(id ,data, dispatch , update_all_reserve);
+    }
+}
+
 export function getReserves() {
     return function ( dispatch ) {
         fetch_reserves(dispatch, update_reserves);
+    }
+}
+
+export function getAllReserves() {
+    return function ( dispatch ) {
+        fetch_all_reserves(dispatch, update_all_reserve);
     }
 }
 
@@ -114,9 +143,9 @@ export function update_reserves_detail( reserve_detail ) {
     }
 }
 
-export function getReservesDetail(id) {
+export function getReservesDetail( id ) {
     return function ( dispatch ) {
-        fetch_reserve_detail(id,dispatch, update_reserves_detail);
+        fetch_reserve_detail(id, dispatch, update_reserves_detail);
     }
 }
 
@@ -136,50 +165,63 @@ export function update_trip_detail( trip_detail ) {
     }
 }
 
+export function update_url_trip( trip_image_url ) {
+    return {
+        type: FETCH_TRIP_URL,
+        trip_image_url
+    }
+}
+
 export function getTrips() {
     return function ( dispatch ) {
         fetch_trips(dispatch, update_trip);
     }
 }
 
-export function createTrip(data){
+export function getUrlTrips( id ) {
     return function ( dispatch ) {
-        create_trip(data , dispatch , update_trip);
+        fetch_trip_images(id, dispatch, update_trip);
     }
 }
 
-export function getTripById(id) {
+export function createTrip( data ) {
     return function ( dispatch ) {
-        fetch_trip_detail(id,dispatch, update_trip_detail);
+        create_trip(data, dispatch, update_trip);
     }
 }
 
-export function editImageTrip(id,data){
+export function getTripById( id ) {
     return function ( dispatch ) {
-        edit_image_trip(id,data , dispatch , update_trip_detail);
+        fetch_trip_detail(id, dispatch, update_trip_detail);
     }
 }
 
-export function editTrip(id,data){
+export function editImageTrip( id, data ) {
     return function ( dispatch ) {
-        edit_trip(id,data , dispatch , update_trip_detail);
+        edit_image_trip(id, data, dispatch, update_trip_detail);
     }
 }
 
-export function addTripImage(id,data){
+export function editTrip( id, data ) {
     return function ( dispatch ) {
-        add_trip_image(id,data , dispatch , update_trip_detail);
+        edit_trip(id, data, dispatch, update_trip_detail);
     }
 }
 
-export function deleteTrip(id){
+export function addTripImage( id, data ) {
     return function ( dispatch ) {
-        delete_trip(id , dispatch , update_trip);
+        add_trip_image(id, data, dispatch, update_trip_detail);
     }
 }
 
-export function deleteTripImage(id){
+export function deleteTrip( id ) {
     return function ( dispatch ) {
-        delete_trip_image(id , dispatch , update_trip_detail);
+        delete_trip(id, dispatch, update_trip);
+    }
+}
+
+export function deleteTripImage( id ) {
+    return function ( dispatch ) {
+        delete_trip_image(id, dispatch, update_trip_detail);
     }
 }

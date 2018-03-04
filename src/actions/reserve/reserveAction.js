@@ -51,8 +51,30 @@ export function fetch_reserves( dispatch, update_reserve) {
             return response.json()
         })
         .then(function ( json ) {
-            console.log(json)
             dispatch(update_reserve(json));
+        });
+}
+
+export function fetch_all_reserves( dispatch, update_all_reserve) {
+    const user_storage = current_user_storage();
+    const auth_token = user_storage.auth_token;
+
+    fetch(defaultUrl + `/reserve/all`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': createJwtFromToken('', auth_token)
+            }
+        })
+        .then(function ( response ) {
+            if (response.status >= 400) {
+                // throw new Error("Bad response from server");
+            }
+
+            return response.json()
+        })
+        .then(function ( json ) {
+            dispatch(update_all_reserve(json));
         });
 }
 
@@ -74,5 +96,28 @@ export function fetch_reserve_detail( id, dispatch, update_reserve_detail ) {
         }).then(
         function ( json ) {
             dispatch(update_reserve_detail(json))
+        });
+}
+
+export function edit_status_payment(id, data, dispatch, update_all_reserve ) {
+    const user_storage = current_user_storage();
+    const auth_token = user_storage.auth_token;
+
+    fetch(defaultUrl + '/reserve/' + id,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': createJwtFromToken('', auth_token)
+            },
+            method: "PUT",
+            body: JSON.stringify(data)
+        })
+        .then(function ( response ) {
+            if (response.status >= 400) {
+            }
+            return response.json()
+        })
+        .then(function ( json ) {
+            dispatch(update_all_reserve(json))
         });
 }

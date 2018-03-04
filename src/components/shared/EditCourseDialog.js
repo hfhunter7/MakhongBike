@@ -41,7 +41,8 @@ class EditCourseDialog extends Component {
             let data = {
                 "description": this.state.description,
                 "trip_name": this.state.trip_name ,
-            }
+            };
+
             this.props.handleEditTrip(data);
 
             this.setState({
@@ -63,7 +64,7 @@ class EditCourseDialog extends Component {
 				<Dialog
 				        open={this.props.open}
 				        onClose={this.props.handleRequestClose}>
-					<DialogTitle>EDIT TRIP</DialogTitle>
+					<DialogTitle>แก้ไขทริป</DialogTitle>
 					<DialogContent>
 						<TextField autoFocus
 						           required
@@ -91,12 +92,12 @@ class EditCourseDialog extends Component {
 					</DialogContent>
 					<DialogActions>
 						<Button onClick={this.handleRequestClose} color="default">
-							Cancel
+							ยกเลิก
 						</Button>
 						<Button raised onClick={this.handleUpdateTrip}
 						        disabled={this.checkEnableButton()}
 						        color="primary">
-							Update Trip
+							แก้ไข
 						</Button>
 					</DialogActions>
 				</Dialog>

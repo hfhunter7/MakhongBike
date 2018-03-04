@@ -112,6 +112,9 @@ class HeaderAdmin extends Component {
                                 <ButtonHeader onClick={this.handleClick.bind(this, "/admin")}>
                                     จัดการทริป
                                 </ButtonHeader>
+                                <ButtonHeader onClick={this.handleClick.bind(this, "/reserve-admin")}>
+                                    การจองทั้งหมด
+                                </ButtonHeader>
                                 <Profile handleClickProfile={this.handleClickProfile}{...this.props}
                                          image_url="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png"/>
                                 <Popover

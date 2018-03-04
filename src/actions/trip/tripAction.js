@@ -47,7 +47,30 @@ export function fetch_trips( dispatch, update_trip ) {
             return response.json()
         })
         .then(function ( json ) {
-            console.log(json)
+            dispatch(update_trip(json));
+        });
+}
+
+export function fetch_trip_images( trip_id, dispatch, update_trip ) {
+    const user_storage = current_user_storage();
+    const auth_token = user_storage.auth_token;
+
+    fetch(defaultUrl + `/trip/trip-image/${trip_id}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': createJwtFromToken('', auth_token)
+            },
+            path: trip_id
+        })
+        .then(function ( response ) {
+            if (response.status >= 400) {
+                // throw new Error("Bad response from server");
+            }
+
+            return response.json()
+        })
+        .then(function ( json ) {
             dispatch(update_trip(json));
         });
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
@@ -9,8 +8,29 @@ import Dialog, {
 
 } from 'material-ui/Dialog';
 import styled from 'styled-components'
-import { withMobileDialog, } from 'material-ui/Dialog';
+import { withStyles } from 'material-ui/styles';
 import { reserveTrip } from "../../actions/actionCreators";
+import {
+    AdultText,
+    ChildNumber, ChildText, EquipmentText, ItemBoxDetail, ItemBoxHeader, ItemDate,
+    ItemRent,
+    ItemRentDetail,
+    OrderDateTime,
+    PurchaseBox, PurchaseBoxHeader, PurchaseBoxHeaderMenu,
+    PurchaseContent, PurchaseDetailBoxText, RouteText, TextRoute
+} from "../../style-js/PurchaseHistory.style";
+
+
+const styles = theme => ({
+    root: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto',
+    },
+    table: {
+        minWidth: 700,
+    },
+});
 
 const ConfirmDialogContainer = styled.div`
 	z-index: 99999;
@@ -32,29 +52,12 @@ const DialogContainer = styled.div`
 `;
 
 const DialogContentStyle = styled(DialogContent)`
-	width: 300px !important;
+	width: 700px !important;
+	margin-left: 23% !important;
+	margin-top: 4% !important;
 	@media (max-width: 1023px) {
 		width: auto !important;
 	}
-`;
-
-const TextTitle = styled.p`
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 5%;
-    margin-left: 1px;
-`;
-
-const TextResult = styled.p`
-	font-size: 16px;
-	font-weight: 400;	
-	margin-top: 5.5%;
-    margin-left: 10%;
-    float: right;
-`;
-
-const ContentText = styled.div`
-	display: flex;
 `;
 
 class ConfirmDialog extends Component {
@@ -63,7 +66,8 @@ class ConfirmDialog extends Component {
 
         this.state = {
             accessory: '',
-            equipments: []
+            equipments: [],
+            data_equipments: []
         }
     }
 
@@ -75,17 +79,17 @@ class ConfirmDialog extends Component {
 
         let data_equipment = [];
 
-        for(let equipment of this.props.equipments){
+        for (let equipment of this.props.equipments) {
             let data_acc = {
                 equipment_id: ''
             }
-            if(equipment.name === this.props.acc_bike){
+            if (equipment.name === this.props.acc_bike) {
                 data_acc.equipment_id = equipment.id;
                 data_equipment.push(data_acc)
-            }else if(equipment.name === this.props.acc_hat){
+            } else if (equipment.name === this.props.acc_hat) {
                 data_acc.equipment_id = equipment.id;
                 data_equipment.push(data_acc)
-            }else if(equipment.name === this.props.acc_suit){
+            } else if (equipment.name === this.props.acc_suit) {
                 data_acc.equipment_id = equipment.id;
                 data_equipment.push(data_acc)
             }
@@ -99,8 +103,9 @@ class ConfirmDialog extends Component {
             adult: this.props.adult,
             child: this.props.child,
             rent_status: this.props.item,
-            reserveEquipments: data_equipment
-        }
+            reserveEquipments: data_equipment,
+            status_payment:'ยังไม่ได้ชำระเงิน'
+        };
 
         console.log(data)
 
@@ -108,11 +113,9 @@ class ConfirmDialog extends Component {
     };
 
     render() {
-        const { fullScreen } = this.props;
-
         return (
             <ConfirmDialogContainer>
-                <Dialog fullScreen={fullScreen}
+                <Dialog fullScreen
                         open={this.props.open}
                         onClose={this.props.handleRequestClose}>
                     <DialogContentStyle>
@@ -120,44 +123,47 @@ class ConfirmDialog extends Component {
                             <HeaderText>{this.props.headerText}</HeaderText><br/>
                         </DialogContainer>
 
-                        <ContentText>
-                            <TextTitle>เส้นทาง</TextTitle>
-                            <TextResult>{this.props.trip}</TextResult>
-                        </ContentText>
+                        <div>
+                            <PurchaseContent>
+                                <PurchaseBox>
+                                    <PurchaseBoxHeader>
+                                        <PurchaseBoxHeaderMenu>
+                                            <TextRoute> เส้นทาง </TextRoute>
+                                            <OrderDateTime> ผู้ใหญ่ </OrderDateTime>
+                                            <ChildNumber> เด็ก </ChildNumber>
+                                        </PurchaseBoxHeaderMenu>
+                                    </PurchaseBoxHeader>
+                                    <ItemBoxDetail>
+                                        {
+                                            <PurchaseDetailBoxText>
+                                                <RouteText>{this.props.trip}</RouteText>
+                                                <AdultText>{this.props.adult}</AdultText>
+                                                <ChildText>{this.props.child}</ChildText>
 
-                        <ContentText>
-                            <TextTitle>วันที่</TextTitle>
-                            <TextResult>{this.props.trip_date}</TextResult>
-                        </ContentText>
+                                            </PurchaseDetailBoxText>
+                                        }
+                                    </ItemBoxDetail>
 
-                        <ContentText>
-                            <TextTitle>ผู้ใหญ่</TextTitle>
-                            <TextResult>{this.props.adult}</TextResult>
-                        </ContentText>
+                                    <ItemBoxHeader>
+                                        <PurchaseBoxHeaderMenu>
+                                            <ItemRent> อุปกรณ์ที่เช่า </ItemRent>
+                                            <ItemDate> วันที่ {this.props.trip_date} </ItemDate>
+                                        </PurchaseBoxHeaderMenu>
+                                    </ItemBoxHeader>
 
-                        <ContentText>
-                            <TextTitle>เด็ก</TextTitle>
-                            <TextResult>{this.props.child}</TextResult>
-                        </ContentText>
-
-                        <ContentText>
-                            <TextTitle>การจองอุปกรณ์</TextTitle>
-                            <TextResult>{this.props.item}</TextResult>
-                        </ContentText>
-
-                        {
-                            this.props.item === 'นำอุปกรณ์มาเอง' ?
-                                <ContentText>
-                                    <TextTitle>อุปกรณ์ที่เช่า</TextTitle>
-                                    <TextResult>ไม่มี</TextResult>
-                                </ContentText>
-                                :
-                                <ContentText>
-                                    <TextTitle>อุปกรณ์ที่เช่า</TextTitle>
-                                    <TextResult>{this.props.acc_bike + ' ' + this.props.acc_hat + ' ' + this.props.acc_suit}</TextResult>
-                                </ContentText>
-                        }
-
+                                    {
+                                        this.props.item === 'นำอุปกรณ์มาเอง' ?
+                                            <ItemRentDetail>
+                                                <EquipmentText>ไม่มี</EquipmentText>
+                                            </ItemRentDetail>
+                                            :
+                                            <ItemRentDetail>
+                                                <EquipmentText>{`${this.props.acc_bike} ${this.props.acc_hat} ${this.props.acc_suit}`}</EquipmentText>
+                                            </ItemRentDetail>
+                                    }
+                                </PurchaseBox>
+                            </PurchaseContent>
+                        </div>
                     </DialogContentStyle>
                     <DialogActions>
                         <Button onClick={this.handleClick} color="primary">
@@ -189,7 +195,7 @@ function mapStateToProps( state ) {
 }
 
 const mapDispatchToProps = {
-    reserveTrip:reserveTrip
+    reserveTrip: reserveTrip
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withMobileDialog()(ConfirmDialog)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ConfirmDialog));

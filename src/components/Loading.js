@@ -42,7 +42,7 @@ class Loading extends Component {
 		return (
 			<Container>
 				<div>
-					<svg width="1000" height="500" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+					<svg width="1100" height="500" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" version="1.1">
 						<g transform="translate(500,500)">
 							<rect className="rotate-45 rotate-back" x={-5} y={-5} width={10} height={10} stroke="black" strokeWidth={20} fill="none"/>
 							<rect className="rotate-45 rotate" x={-50} y={-50} width={100} height={100} stroke="black" strokeWidth={20} strokeLinejoin="bevel" fill="none"/>

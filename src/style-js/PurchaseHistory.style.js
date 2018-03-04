@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IconSpan } from './Icon.style'
+import Button from "material-ui/Button";
 
 export const PurchaseContainer = styled.div`
 	padding: 50px 150px;
@@ -276,7 +277,17 @@ export const NumberHistory = styled.div`
       float: left;
       margin-left: 6px;
 	    }
-    
+`;
+
+export const NumberHistoryAdmin = styled.div`
+    display: inline-block;
+    width: 10%;
+    margin-left: 3%;
+      @media (max-width: 767px) {
+      width: 5%;
+      float: left;
+      margin-left: 6px;
+	    }
 `;
 
 export const TextRoute = styled.div`
@@ -335,6 +346,16 @@ export const OrderDateTime = styled.div`
 	  }
 `;
 
+export const OrderDateTimeAdmin = styled.div`
+    display: inline-block;
+    width: 13%;
+      @media (max-width: 767px) {
+		width: 30%;
+    	float: left;
+   	 	word-wrap: break-word;
+	  }
+`;
+
 export const AdultText = styled.div`
     display: inline-block;
     width: 30%;
@@ -358,6 +379,15 @@ export const PriceText = styled.div`
 `;
 
 export const OrderNumber = styled.div`
+    display: inline-block;
+    width: 20%;
+      @media (max-width: 767px) {
+	   width: 25%; 
+	   text-align: left;
+	    }
+`;
+
+export const OrderNumberAdmin = styled.div`
     display: inline-block;
     width: 20%;
       @media (max-width: 767px) {
@@ -407,6 +437,16 @@ export const PaidWith = styled.div`
 	    }
 `;
 
+export const PaidWithAdmin = styled.div`
+    display: inline-block;
+    width: 15%;
+	  @media (max-width: 767px) {
+	    width: 20%;
+	    text-align: left;
+	    display: inline-flex;
+	    }
+`;
+
 export const ItemRent = styled.div`
     display: inline-block;
     width: 20%;
@@ -443,6 +483,18 @@ export const OrderItemPrice = styled.div`
 export const ItemPrice = styled.div`
     display: inline-block;
     width: 20%;
+    text-align: center;
+    margin-left: 33%;
+      @media (max-width: 767px) {
+   			width: 20%;
+   			display: inline-flex;
+
+	    }
+`;
+
+export const ItemDate = styled.div`
+    display: inline-block;
+    width: 24%;
     text-align: center;
     margin-left: 33%;
       @media (max-width: 767px) {
@@ -607,21 +659,29 @@ export const OrderTotal = styled.div`
 	    }
 `;
 
-// export const PurchaseDetailSummary = styled.div`
-// 	width: 15%;
-// 	font-weight: bolder;
-// 	font-size: 17px;
-// 	margin-top: 10px;
-// 	float: right;
-// 	  @media (max-width: 767px) {
-//     	margin-bottom: 30px;
-//     	width: 30%;
-//     	font-size: 12px;
-//     	text-align: right;
-//    		margin-right: 25px;
-//     	font-weight: bolder;
-// 	}
-// `;
+export const OrderTotalAdmin = styled.div`
+    display: inline-block;
+    width: 15%;
+    text-align: left;
+    margin-left: -3%;
+      @media (max-width: 767px) {
+   			width: 20%;
+   			display: inline-flex;
+
+	    }
+`;
+
+export const ReserveStatus = styled.div`
+    display: inline-block;
+    width: 15%;
+    text-align: left;
+    margin-left: 3%;
+      @media (max-width: 767px) {
+   			width: 20%;
+   			display: inline-flex;
+
+	    }
+`;
 
 export const PurchaseDetailBoxText = styled.div`
 	display: inline-flex;
@@ -687,4 +747,8 @@ export const Summary = styled.div`
    		 margin-right: 25px;
     	font-weight: bolder;
 	}
+`;
+
+export const ButtonEditStatusPayment = styled(Button)`
+    
 `;

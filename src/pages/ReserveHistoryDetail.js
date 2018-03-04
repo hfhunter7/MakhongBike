@@ -21,8 +21,8 @@ import {
 import { withRouter } from "react-router";
 
 import { connect } from 'react-redux';
-import Loading from '../components/Loading';
 import { getReservesDetail } from "../actions/actionCreators";
+import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
 class ReserveHistoryDetail extends Component {
     constructor( props ) {
@@ -59,8 +59,14 @@ class ReserveHistoryDetail extends Component {
     }
 
     render() {
-        if (this.state.showLoading) return <Loading/>
-        console.log(this.state.equipments)
+        if (this.state.showLoading)
+            return <ContainLoader>
+                <Loader
+                    color={'#0088ff'}
+                    size={75}
+                />
+            </ContainLoader>;
+
         return (
             <Container>
                 <Header purchasePage

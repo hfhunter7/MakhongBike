@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
-import ImageSlide from "../components/ImageSlide";
+import { ImageContain, ImgContainer } from "../style-js/CourseDetail.style";
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -60,8 +60,8 @@ class Dashboard extends Component {
 
     render() {
         const images = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/homepage2.jpg?alt=media&token=b3351cc1-2658-41f1-9319-eb4cd84cbde0' },
+            'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08',
+            'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/homepage2.jpg?alt=media&token=b3351cc1-2658-41f1-9319-eb4cd84cbde0',
         ];
 
         const image_show = [
@@ -74,9 +74,14 @@ class Dashboard extends Component {
                 <Row>
                     <TitleDashBoard></TitleDashBoard>
                     <HRLine/>
-                    <Content>
-                        <ImageSlide light_box_image={images} show_image={image_show}/>
-                    </Content>
+                    <ImgContainer>
+                        <ImageContain
+                            images={images}
+                            duration={5000}
+                            transitionDuration={1000}
+                        />
+                    </ImgContainer>
+
                     <HRLine/>
                     <ContentTextWelcome>
                         <WelcomeText>ยินดีต้อนรับสู่เว็บไซต์ MAEKHONG BIKE</WelcomeText>

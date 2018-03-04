@@ -8,6 +8,13 @@ import NavBarFooter from "../components/NavBarFooter";
 import Footer from "../components/Footer";
 import PropTypes from 'prop-types';
 
+import ExpansionPanel, {
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+} from 'material-ui/ExpansionPanel';
+import Typography from 'material-ui/Typography';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+
 import { withStyles } from 'material-ui/styles';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel, FormHelperText, FormGroup, } from 'material-ui/Form';
@@ -20,10 +27,13 @@ import Select from 'material-ui/Select';
 import { MenuItem } from 'material-ui/Menu';
 import Checkbox from 'material-ui/Checkbox';
 import Button from "material-ui/Button";
-import ImageSlide from "../components/ImageSlide";
 import ConfirmDialog from "../components/shared/ConfirmDialog";
-import { getEquipments, getReserves } from "../actions/actionCreators";
-import Loading from "../components/Loading";
+import { getEquipments, getReserves, getTrips, getUrlTrips } from "../actions/actionCreators";
+import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
+
+import { ButtonContainer, ButtonMoreImage, ImageContain, PreviewImage } from "../style-js/CourseDetail.style";
+import DialogImage from "../components/shared/DialogImage";
+
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -84,6 +94,14 @@ const styles = theme => ({
     selectEmpty: {
         marginTop: theme.spacing.unit * 2,
     },
+    rootTypo: {
+        width: '90%',
+        marginLeft: '5%'
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+    },
 });
 
 const ContentRadio = styled.div`
@@ -133,6 +151,21 @@ const TextTrip = styled.h3`
     font-size: 18px;
 `;
 
+const TypographyText = styled(Typography)`
+    font-size: 18px !important;
+`;
+
+const TypographyTextHeader = styled(Typography)`
+    font-size: 20px;
+    font-weight: 500;
+`;
+
+const ExpandDetail = styled(ExpansionPanelDetails)`
+    display: block !important;
+    padding: 8px 24px 24px !important;
+    flex-grow: 1 !important;
+`;
+
 class Booking extends Component {
     constructor( props ) {
         super(props);
@@ -152,7 +185,10 @@ class Booking extends Component {
             acc_suit: '',
             openDialog: false,
             showLoading: true,
-            alert:''
+            alert: '',
+            images: [],
+            openImageDialog: false,
+            trip_id: '',
         }
     }
 
@@ -169,14 +205,15 @@ class Booking extends Component {
     };
 
     handleChangeDate = ( event ) => {
-        for(let r of this.props.reserve){
-            if(r.reserve_date === event.target.value){
+        for (let r of this.props.reserve) {
+            if (r.reserve_date === event.target.value) {
                 this.setState({
                     alert: 'วันนี้มีคนจองแล้ว'
                 })
-            }else{
+                break;
+            } else {
                 this.setState({
-                    alert:'',
+                    alert: '',
                     date: event.target.value
                 })
             }
@@ -201,6 +238,26 @@ class Booking extends Component {
         this.setState({
             openDialog: false,
         });
+    };
+
+    CloseDialog = ( key ) => {
+        return () => {
+            this.setState({
+                [key]: false,
+                trip_id: '',
+                images: []
+            })
+        }
+    };
+
+    openDialog = ( key, trip_id, images ) => {
+        return () => {
+            this.setState({
+                [key]: true,
+                trip_id: trip_id,
+                images: images
+            })
+        }
     };
 
     enableButton() {
@@ -228,10 +285,11 @@ class Booking extends Component {
     componentWillMount() {
         this.props.getEquipments();
         this.props.getReserves();
+        this.props.getTrips();
     }
 
     componentWillReceiveProps( nextProps, nextContext ) {
-        if(nextProps.equipments !== this.props.equipments ){
+        if (nextProps.trip !== this.props.trip) {
             this.setState({
                 showLoading: false,
             })
@@ -239,49 +297,15 @@ class Booking extends Component {
     }
 
     render() {
-        if (this.state.showLoading) return <Loading />;
+        if (this.state.showLoading)
+            return <ContainLoader>
+                <Loader
+                    color={'#0088ff'}
+                    size={75}
+                />
+            </ContainLoader>;
 
         const { classes } = this.props;
-
-        const images = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2F07396h37wm.jpg?alt=media&token=caa3c512-bd4a-4c8c-9504-dd1fbe62286a' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6516.JPG?alt=media&token=76782bef-9bbe-4379-a21a-77747fcf2ab3' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6517.JPG?alt=media&token=b42bdc15-5c96-4632-ad3e-74e39d1e8fc3' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6519.JPG?alt=media&token=f27bb1e1-c998-427c-86f0-bc76dc4c222c' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6521.JPG?alt=media&token=e06e4e7f-b72b-4ce0-845f-582b0ea1531d' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6524.JPG?alt=media&token=1be34c54-c258-4b1e-ac20-5f9701e7aa1e' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6527.JPG?alt=media&token=d1ab28e5-9a9d-4afa-9ce8-281be0ac101c' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6528.JPG?alt=media&token=e056bf65-d442-4f02-a25f-5b0009c0be95' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6537.JPG?alt=media&token=70663e49-e113-442c-a750-c3978681f9c4' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6542.JPG?alt=media&token=b2905e3d-a055-4a36-b8fb-03403826a411' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6543.JPG?alt=media&token=76f7829d-04af-4508-86fa-cd4875db2f43' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6548.JPG?alt=media&token=aa7a546a-afc6-4a8e-8eaf-502865010a9c' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2FIMG_6554.JPG?alt=media&token=1d996cf4-983d-4691-a4d9-e377f67e0ff2' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2Fn20170505152555_130304.jpg?alt=media&token=c7b9f9de-721a-4a06-b575-da59f88a6c75' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2F%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%881.jpg?alt=media&token=bdc26b93-e0bb-4a6f-9d76-39a1861527b2' },
-        ];
-
-        const images2 = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2Fck_0097.jpg?alt=media&token=d4f48acd-e64b-4004-ae66-f4a076ace878' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6442.JPG?alt=media&token=96e279b2-06da-4e7c-b0b1-61f8037eec9a' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6451.JPG?alt=media&token=19c94c05-ef20-4a78-96a2-02d943568562' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6455.JPG?alt=media&token=def45b0e-5dfc-4b46-a5f0-54750c148f0e' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6456.JPG?alt=media&token=b0d102fe-9812-4719-ae56-afbe5e334ef7' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6457.JPG?alt=media&token=568b29eb-5a93-4b50-801f-a648783683ff' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6458.JPG?alt=media&token=789f99c2-14c8-4260-8edf-15b3e973011b' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6483.JPG?alt=media&token=efd3d68d-180e-4836-ab7e-283a3a6b7acf' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2Fpic-1499154004369.JPG?alt=media&token=daf69c6d-9479-4887-9f82-4ae97969a3dc' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2F%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%9A%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%AB%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B8%AA%E0%B9%89%E0%B8%B2%E0%B8%994.jpg?alt=media&token=3c9ef47f-56ae-45fc-9c7b-024909d5f989' },
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2F%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%882.jpg?alt=media&token=f132f8a7-8d9c-4bcb-9256-0a98260ef7e7' },
-        ];
-
-        const image_show = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip1%2Fshow1.jpg?alt=media&token=c68b9e9c-88d5-4694-97d0-f8ffce4dfc68' },
-        ];
-
-        const image_show2 = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/trip2%2FIMG_6471.JPG?alt=media&token=f1186806-af0b-4adf-a76f-ccc59c0b1ab4' },
-        ];
 
         return (
             <Container>
@@ -289,14 +313,36 @@ class Booking extends Component {
                 <Row>
                     <TitleDashBoard>จองทริปปั่นจักรยาน</TitleDashBoard>
                     <HRLine/>
-                    <ContentTrip>
-                        <TextTrip>เส้นทางที่ 1</TextTrip>
-                        <ImageSlide light_box_image={images} show_image={image_show} height={340}/>
-                    </ContentTrip>
-                    <ContentTrip>
-                        <TextTrip>เส้นทางที่ 2</TextTrip>
-                        <ImageSlide light_box_image={images2} show_image={image_show2}/>
-                    </ContentTrip>
+
+                    {
+                        this.props.trip.map(( trip, index ) => {
+                            return <div className={classes.rootTypo} key={index}>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                        <TypographyTextHeader>{trip.trip_name}</TypographyTextHeader>
+                                    </ExpansionPanelSummary>
+                                    <PreviewImage>
+                                        <img src={trip.image_url}/>
+                                    </PreviewImage>
+                                    <ExpansionPanelDetails>
+                                        <TypographyText>
+                                            {trip.description}
+                                        </TypographyText>
+                                    </ExpansionPanelDetails>
+                                    <ButtonContainer>
+                                        <ButtonMoreImage
+                                            variant="raised"
+                                            color="primary"
+                                            onClick={this.openDialog('openImageDialog', trip.id, trip.trip_images)}
+                                        >
+                                            ดูรูปภาพเพิ่มเติม
+                                        </ButtonMoreImage>
+                                    </ButtonContainer>
+                                </ExpansionPanel>
+                            </div>
+                        })
+                    }
+
                     <Content>
                         <ContentRadio>
                             <FormControl component="fieldset" required className={classes.formControl}>
@@ -308,8 +354,17 @@ class Booking extends Component {
                                     value={this.state.trip}
                                     onChange={this.handleChange('trip')}
                                 >
-                                    <FormControlLabel value="เส้นทาง 1" control={<Radio/>} label="เส้นทาง 1"/>
-                                    <FormControlLabel value="เส้นทาง 2" control={<Radio/>} label="เส้นทาง 2"/>
+                                    {
+                                        this.props.trip.length > 0 &&
+                                        this.props.trip.map(( trip , index) => {
+                                            return <FormControlLabel
+                                                key={index}
+                                                value={trip.trip_name}
+                                                control={<Radio/>}
+                                                label={trip.trip_name}
+                                            />
+                                        })
+                                    }
                                 </RadioGroup>
                             </FormControl>
                         </ContentRadio>
@@ -337,9 +392,6 @@ class Booking extends Component {
                                     value={this.state.adult}
                                     onChange={this.handleChangeSelect('adult')}
                                 >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
                                     <MenuItem value={1}>1</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
                                     <MenuItem value={3}>3</MenuItem>
@@ -353,9 +405,7 @@ class Booking extends Component {
                                     value={this.state.child}
                                     onChange={this.handleChangeSelect('child')}
                                 >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
+
                                     <MenuItem value={1}>1</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
                                     <MenuItem value={3}>3</MenuItem>
@@ -448,7 +498,14 @@ class Booking extends Component {
                                acc_suit={this.state.acc_suit}
                                equipments={this.props.equipments}
                 />
+                <DialogImage open={this.state.openImageDialog}
+                             handleRequestClose={this.CloseDialog('openImageDialog')}
+                             confirmText="ok"
+                             headerText="รูปภาพในทริป"
+                             trip_images={this.state.images}
+                />
             </Container>
+
         );
     }
 }
@@ -457,19 +514,25 @@ function mapStateToProps( state ) {
     return {
         user: state.user,
         equipments: state.equipments,
-        reserve: state.reserve
+        reserve: state.reserve,
+        trip: state.trip,
+        trip_image_url: state.trip_image_url
     }
 }
 
 const mapDispatchToProps = {
     getEquipments: getEquipments,
-    getReserves: getReserves
+    getReserves: getReserves,
+    getTrips: getTrips,
+    getUrlTrips: getUrlTrips
 };
 
 Booking.propTypes = {
     classes: PropTypes.object.isRequired,
     getEquipments: PropTypes.func.isRequired,
-    getReserves: PropTypes.func.isRequired
+    getReserves: PropTypes.func.isRequired,
+    getTrips: PropTypes.func.isRequired,
+    getUrlTrips: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Booking));

@@ -34,14 +34,15 @@ import {
 } from '../style-js/CourseDetail.style'
 import EditCourseDialog from '../components/shared/EditCourseDialog'
 import ConfirmDeleteDialog from '../components/shared/ConfirmDeleteDialog'
-import Loading from '../components/Loading';
+
 import {
     ButtonAdd,
     ButtonCertificateEmpty,
     CertificateEmptyContainer, CertificateEmptySubTitle, CertificateEmptyTitle, CertificatesDetailContent,
+    ContainLoader,
     DetailContentBody,
     DetailContentHeader,
-    IconEmpty
+    IconEmpty, Loader
 } from "../style-js/CertificateLayout.style";
 
 //api
@@ -126,7 +127,8 @@ class TripDetail extends Component {
             trip_detail: {},
             showLoading: true,
             image_preview: '',
-            openDeleteDialog: false
+            openDeleteDialog: false,
+            open_uploading_dialog: false
         };
     }
 
@@ -182,22 +184,26 @@ class TripDetail extends Component {
     handleImageChange = ( e ) => {
         const _this = this;
 
+        console.log(e.target.files[0])
         const file = e.target.files[ 0 ].name;
 
         const blob = new Blob([ e.target.files[ 0 ] ], { type: "image/jpeg" });
 
         const storageRef = firebase.storage().ref('image/');
 
-        const deleteRef = storageRef.child(this.props.trip_detail.filename);
+        if (_this.props.trip_detail.filename !== null) {
+            const deleteRef = storageRef.child(_this.props.trip_detail.filename);
 
-        deleteRef.delete().then(() => {
-            console.log('delete success')
-        });
+            deleteRef.delete().then(() => {
+                console.log('delete success')
+            });
+        }
 
         const task = firebase.storage().ref('image/' + file).put(blob);
 
         task.on('state_changed',
             function progress( snapshot ) {
+                _this.setState({open_uploading_dialog : true})
                 let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('upload is ' + percentage + '% done')
                 switch (snapshot.state) {
@@ -216,6 +222,9 @@ class TripDetail extends Component {
             },
 
             function complete() {
+                _this.setState({
+                    open_uploading_dialog: false
+                })
                 console.log(task.snapshot.downloadURL)
 
                 _this.setState({
@@ -230,9 +239,10 @@ class TripDetail extends Component {
                 _this.props.editImageTrip(_this.props.trip_detail.id, data);
             }
         );
+
     }
 
-    handleTripImageChange = (e) => {
+    handleTripImageChange = ( e ) => {
         const _this = this;
 
         const file = e.target.files[ 0 ].name;
@@ -245,6 +255,9 @@ class TripDetail extends Component {
 
         task.on('state_changed',
             function progress( snapshot ) {
+                _this.setState({
+                    open_uploading_dialog: true
+                })
                 let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('upload is ' + percentage + '% done');
                 switch (snapshot.state) {
@@ -263,6 +276,9 @@ class TripDetail extends Component {
             },
 
             function complete() {
+                _this.setState({
+                    open_uploading_dialog: false
+                })
                 console.log(task.snapshot.downloadURL);
 
                 _this.setState({
@@ -287,19 +303,22 @@ class TripDetail extends Component {
         })
     };
 
-    deleteTrip = (id) => {
-        console.log('trip : '+id)
-
+    deleteTrip = ( id ) => {
         this.props.deleteTrip(id);
     };
 
-    handleDeleteTripImage = (trip_image_id) => {
-        console.log('trip image : '+trip_image_id)
+    handleDeleteTripImage = ( trip_image_id ) => {
         this.props.deleteTripImage(trip_image_id);
     };
 
     render() {
-        if (this.state.showLoading) return <Loading/>;
+        if (this.state.showLoading)
+            return <ContainLoader>
+                <Loader
+                    color={'#0088ff'}
+                    size={75}
+                />
+            </ContainLoader>;
 
         let imagePreview = <div/>;
         if (this.state.image_preview) {
@@ -373,7 +392,8 @@ class TripDetail extends Component {
                                             <HeaderIcon name="list"/>
                                         </HeaderIconBlock>
                                         <HeaderTitle>รูปภาพของทริป</HeaderTitle>
-                                        <FileInput id="upload-trip-image" type='file' onChange={this.handleTripImageChange}/>
+                                        <FileInput id="upload-trip-image" type='file'
+                                                   onChange={this.handleTripImageChange}/>
                                         {
                                             this.props.trip_detail.trip_images.length > 0 &&
                                             <ButtonAdd raised color="primary" onClick={this.handleClickOpenFileImage}>

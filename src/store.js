@@ -13,7 +13,9 @@ const defaultState = {
     reserve: [],
     reserve_detail:{},
     trip:[],
-    trip_detail: {}
+    trip_detail: {},
+    trip_image_url:[],
+    reserve_all:[]
 };
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools(applyMiddleware(thunk)));

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { greenNav } from './variables.style'
 import { IconSpan, Icon } from './Icon.style';
+import { Slide } from 'react-slideshow-image';
+import Button from "material-ui/Button";
 
 export const CourseDetailContainer = styled.div`
 	
@@ -479,4 +481,29 @@ export const SpanDelete = styled.span`
     top: 5px;
     right: 5px;
     color: red;
+`;
+
+export const ImageContain = styled(Slide)`
+    
+`
+
+export const ImgContainer = styled.div`
+    width: 80% !important;
+    margin-left: 10% !important;
+`;
+
+export const PreviewImage = styled.div`
+    width: 70%;
+    height: 280px;
+    margin-left: 14%;
+    margin-bottom: 3%;
+`;
+
+export const ButtonMoreImage = styled(Button)`
+    
+`;
+
+export const ButtonContainer = styled.div`
+    margin: 10px;
+    float: right;
 `;
