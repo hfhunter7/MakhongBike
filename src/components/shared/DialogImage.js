@@ -8,8 +8,6 @@ import styled from 'styled-components'
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { ImageContain } from "../../style-js/CourseDetail.style";
-import { getUrlTrips } from "../../actions/actionCreators";
-import PropTypes from 'prop-types';
 
 const ConfirmDialogContainer = styled.div`
 	z-index: 99999;
@@ -36,16 +34,6 @@ const DialogContentStyle = styled(DialogContent)`
 	@media (max-width: 1023px) {
 		width: auto !important;
 	}
-`;
-
-const DescriptionBlock = styled.div`
-	color: #000000;
-	text-align: center;
-`;
-const IconEmpty = styled.div`
-     font-size: 100px;
-     color: gray;
-     margin-bottom: 20px;
 `;
 
 class DialogImage extends Component {

@@ -31,7 +31,7 @@ import ConfirmDialog from "../components/shared/ConfirmDialog";
 import { getEquipments, getReserves, getTrips, getUrlTrips } from "../actions/actionCreators";
 import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
-import { ButtonContainer, ButtonMoreImage, ImageContain, PreviewImage } from "../style-js/CourseDetail.style";
+import { ButtonContainer, ButtonMoreImage, PreviewImage } from "../style-js/CourseDetail.style";
 import DialogImage from "../components/shared/DialogImage";
 
 
@@ -142,15 +142,6 @@ const ButtonNext = styled(Button)`
     margin-left: 47%;
 `;
 
-const ContentTrip = styled.div`
-    margin-left: 5%;
-`;
-
-const TextTrip = styled.h3`
-    font-weight: 500;
-    font-size: 18px;
-`;
-
 const TypographyText = styled(Typography)`
     font-size: 18px !important;
 `;
@@ -158,12 +149,6 @@ const TypographyText = styled(Typography)`
 const TypographyTextHeader = styled(Typography)`
     font-size: 20px;
     font-weight: 500;
-`;
-
-const ExpandDetail = styled(ExpansionPanelDetails)`
-    display: block !important;
-    padding: 8px 24px 24px !important;
-    flex-grow: 1 !important;
 `;
 
 class Booking extends Component {
@@ -322,7 +307,7 @@ class Booking extends Component {
                                         <TypographyTextHeader>{trip.trip_name}</TypographyTextHeader>
                                     </ExpansionPanelSummary>
                                     <PreviewImage>
-                                        <img src={trip.image_url}/>
+                                        <img src={trip.image_url} alt=""/>
                                     </PreviewImage>
                                     <ExpansionPanelDetails>
                                         <TypographyText>

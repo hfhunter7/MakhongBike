@@ -94,6 +94,18 @@ class Register extends Component {
         }
     };
 
+    enabledButton = () => {
+        let enabled = true;
+
+        if(this.state.username !== '' && this.state.password !== '' && this.state.confirm_password !== ''
+            && this.state.name !== '' && this.state.phone_number !== '' && this.state.email !== '')
+        {
+            enabled = false
+        }
+
+        return enabled;
+    };
+
     handleClickRegister = () => {
         let pass;
 
@@ -166,6 +178,7 @@ class Register extends Component {
                             raised
                             color="primary"
                             onClick={this.handleClickRegister}
+                            disabled={this.enabledButton()}
                         >
                             Register
                         </ButtonRegister>

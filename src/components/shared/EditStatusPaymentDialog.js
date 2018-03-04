@@ -20,11 +20,11 @@ class EditStatusPaymentDialog extends Component {
 
     checkEnableButton() {
         let disabled = true;
+
         if (this.state.status_payment !== '') {
             disabled = false;
-        } else {
-            disabled = true;
         }
+
         return disabled
     }
 

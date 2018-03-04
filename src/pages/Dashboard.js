@@ -34,18 +34,6 @@ const HRLine = styled.hr`
 	}
 `;
 
-const Content = styled.div`
-    margin-left: 5%;
-    margin-right: 5%;
-    display: block;
-    width: 90%;
-    @media (max-width: 767px) {
-        display: block;
-		width: 100%;
-		margin: 0;
-	}
-`;
-
 const ContentTextWelcome = styled.div`
     text-align: center;
 `;
@@ -62,10 +50,6 @@ class Dashboard extends Component {
         const images = [
             'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08',
             'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/homepage2.jpg?alt=media&token=b3351cc1-2658-41f1-9319-eb4cd84cbde0',
-        ];
-
-        const image_show = [
-            { src: 'https://firebasestorage.googleapis.com/v0/b/maekhongbike.appspot.com/o/pic1.jpg?alt=media&token=079885c9-643e-4344-9748-7739c4500e08' },
         ];
 
         return (
