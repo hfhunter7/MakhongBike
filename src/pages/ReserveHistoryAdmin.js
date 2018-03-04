@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row } from '../style-js/Grid.style'
 import PropTypes from 'prop-types'
-import Header from '../components/Header';
 import Footer from "../components/Footer";
 import NavBarFooter from '../components/NavBarFooter';
 import {
@@ -32,6 +31,7 @@ import { connect } from 'react-redux';
 import { EditStatusPayment, getAllReserves } from "../actions/actionCreators";
 import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 import EditStatusPaymentDialog from "../components/shared/EditStatusPaymentDialog";
+import HeaderAdmin from "../components/HeaderAdmin";
 
 class ReserveHistoryAdmin extends Component {
     constructor( props ) {
@@ -101,7 +101,7 @@ class ReserveHistoryAdmin extends Component {
             </ContainLoader>;
         return (
             <Container>
-                <Header {...this.props}/>
+                <HeaderAdmin {...this.props}/>
                 <Row>
                     {
                         this.props.reserve_all.length > 0 ?

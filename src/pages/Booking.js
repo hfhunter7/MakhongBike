@@ -28,7 +28,7 @@ import { MenuItem } from 'material-ui/Menu';
 import Checkbox from 'material-ui/Checkbox';
 import Button from "material-ui/Button";
 import ConfirmDialog from "../components/shared/ConfirmDialog";
-import { getEquipments, getReserves, getTrips, getUrlTrips } from "../actions/actionCreators";
+import { getAllReserves, getEquipments, getReserves, getTrips, getUrlTrips } from "../actions/actionCreators";
 import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
 import { ButtonContainer, ButtonMoreImage, PreviewImage } from "../style-js/CourseDetail.style";
@@ -174,6 +174,7 @@ class Booking extends Component {
             images: [],
             openImageDialog: false,
             trip_id: '',
+            previous_day: false
         }
     }
 
@@ -190,7 +191,22 @@ class Booking extends Component {
     };
 
     handleChangeDate = ( event ) => {
-        for (let r of this.props.reserve) {
+        const startDate = new Date();
+
+        if(Date.parse(event.target.value)-Date.parse(startDate)<0)
+        {
+            console.log('previous day')
+            this.setState({
+                previous_day: false
+            })
+        }else {
+            console.log('present day' + event.target.value)
+            this.setState({
+                previous_day: true
+            })
+        }
+
+        for (let r of this.props.reserve_all) {
             if (r.reserve_date === event.target.value) {
                 this.setState({
                     alert: 'วันนี้มีคนจองแล้ว'
@@ -249,7 +265,7 @@ class Booking extends Component {
         let disabled = true;
 
         if ((this.state.trip !== '' && this.state.date !== '') && (this.state.adult !== '' && this.state.child !== '')) {
-            if (this.state.item !== '' && this.state.alert === '') {
+            if ((this.state.item !== '' && this.state.alert === '') && this.state.previous_day) {
                 disabled = false;
             }
         }
@@ -271,6 +287,7 @@ class Booking extends Component {
         this.props.getEquipments();
         this.props.getReserves();
         this.props.getTrips();
+        this.props.getAllReserves();
     }
 
     componentWillReceiveProps( nextProps, nextContext ) {
@@ -291,6 +308,8 @@ class Booking extends Component {
             </ContainLoader>;
 
         const { classes } = this.props;
+
+
 
         return (
             <Container>
@@ -501,7 +520,8 @@ function mapStateToProps( state ) {
         equipments: state.equipments,
         reserve: state.reserve,
         trip: state.trip,
-        trip_image_url: state.trip_image_url
+        trip_image_url: state.trip_image_url,
+        reserve_all: state.reserve_all
     }
 }
 
@@ -509,7 +529,8 @@ const mapDispatchToProps = {
     getEquipments: getEquipments,
     getReserves: getReserves,
     getTrips: getTrips,
-    getUrlTrips: getUrlTrips
+    getUrlTrips: getUrlTrips,
+    getAllReserves: getAllReserves
 };
 
 Booking.propTypes = {
