@@ -91,6 +91,11 @@ class ReserveHistoryAdmin extends Component {
         })
     };
 
+    handleClickReserveDetail = (e) => {
+        const id = e.currentTarget.dataset.id;
+        this.props.history.push(`/reserve-history-admin/${id}`);
+    };
+
     render() {
         if (this.state.showLoading)
             return <ContainLoader>
@@ -127,7 +132,9 @@ class ReserveHistoryAdmin extends Component {
                                                     this.props.reserve_all.map(( reserve, index ) => {
                                                         return (
                                                             <PurchaseDetailBoxText key={index}
-                                                                                   data-id={reserve.id}>
+                                                                                   data-id={reserve.id}
+                                                                                   onClick={this.handleClickReserveDetail}
+                                                            >
                                                                 <NumberHistoryAdmin>{index + 1}</NumberHistoryAdmin>
                                                                 <OrderDateTimeAdmin>{reserve.create_by}</OrderDateTimeAdmin>
                                                                 <OrderNumberAdmin>{reserve.reserve_date}</OrderNumberAdmin>
@@ -135,7 +142,6 @@ class ReserveHistoryAdmin extends Component {
                                                                 <OrderTotalAdmin>{reserve.rent_status}</OrderTotalAdmin>
                                                                 <ReserveStatus>{reserve.status_payment}</ReserveStatus>
                                                                 <ButtonEditStatusPayment
-                                                                    raiesd
                                                                     color="primary"
                                                                     onClick={this.openDialog('openEditDialog', reserve.id, reserve.status_payment)}
                                                                 >

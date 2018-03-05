@@ -176,6 +176,30 @@ export const DetailDate = styled.div`
 	}
 `;
 
+export const ButtonDeleteContain = styled.div`
+ 	float: right;
+ 	margin-top: -3%;
+`;
+
+export const ButtonEditAdult = styled(Button)`
+    margin-left: 2%;
+`;
+
+export const ButtonDelete = styled(Button)`	
+ 	color :red !important;
+ 	font-weight: 500;
+ 	background-color: white !important;
+ 	border: 1px solid #ebebeb !important;
+ 	width: 10%;
+ 	margin-left: 1% !important;
+ 	&:hover {
+		background-color: #ebebeb !important;
+	}
+	@media (max-width: 767px) {
+	    width: 25%;
+	}
+ `;
+
 export const DetailPaidWith = styled.div`
 	font-size: 13px;
 	margin-bottom: -10px;
@@ -298,14 +322,35 @@ export const TextRoute = styled.div`
       width: 5%;
       float: left;
       margin-left: 6px;
-	    }
-    
+	    }  
+`;
+
+export const TextRouteAdmin = styled.div`
+    display: inline-block;
+    width: 27%;
+    margin-left: 10%;
+      @media (max-width: 767px) {
+      width: 5%;
+      float: left;
+      margin-left: 6px;
+	    }  
 `;
 
 export const RouteText = styled.div`
     display: inline-block;
     width: 34%;
     margin-left: 12%;
+      @media (max-width: 767px) {
+      width: 5%;
+      float: left;
+      margin-left: 6px;
+	    }  
+`;
+
+export const RouteTextAdmin = styled.div`
+    display: inline-block;
+    width: 29%;
+    margin-left: 10%;
       @media (max-width: 767px) {
       width: 5%;
       float: left;
@@ -346,6 +391,16 @@ export const OrderDateTime = styled.div`
 	  }
 `;
 
+export const TextDetailAdmin = styled.div`
+    display: inline-block;
+    width: 17%;
+      @media (max-width: 767px) {
+		width: 30%;
+    	float: left;
+   	 	word-wrap: break-word;
+	  }
+`;
+
 export const OrderDateTimeAdmin = styled.div`
     display: inline-block;
     width: 13%;
@@ -358,7 +413,7 @@ export const OrderDateTimeAdmin = styled.div`
 
 export const AdultText = styled.div`
     display: inline-block;
-    width: 30%;
+    width: 3%;
       @media (max-width: 767px) {
 		width: 30%;
     	float: left;
@@ -603,6 +658,24 @@ export const ChildText = styled.div`
 	}
 `;
 
+export const ChildTextAdmin = styled.div`
+	display: inline-block;
+    width: 8%;
+	word-wrap: break-word;
+	cursor: pointer;
+	margin-left: 10%;
+	 @media (max-width: 767px) {
+    	font-size: 9px;
+    	word-wrap: break-word;
+    	width: 25%;
+    	text-align: left;
+	}
+`;
+
+export const ButtonEditChild = styled(Button)`
+    margin-left: 1%;
+`;
+
 export const PurchaseDetailOrderNumberHistory = styled.div`
 	width: 20%;
 	color: #0088FF;
@@ -734,7 +807,7 @@ export const EmptyRent = styled.div`
 `;
 
 export const Summary = styled.div`
-	width: 16%;
+	width: 17%;
 	font-weight: bolder;
 	font-size: 17px;
 	margin-top: 3%;

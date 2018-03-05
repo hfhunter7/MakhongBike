@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row } from '../style-js/Grid.style'
 import { connect } from 'react-redux';
-import Header from '../components/Header';
 import NavBarFooter from '../components/NavBarFooter';
 
 import Footer from "../components/Footer";
@@ -12,7 +11,6 @@ import {
     ProfileContent,
     ProfileImge,
     ProfileDetail,
-    ProfileUserName,
     ProfileInformation,
     ProfileEdit,
     ProfileBirthDateBox,
@@ -24,6 +22,7 @@ import {
 import EditProfileDialog from "../components/shared/EditProfileDialog";
 import { updateProfileTrainer } from "../actions/actionCreators";
 import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
+import HeaderAdmin from "../components/HeaderAdmin";
 
 class MyProfile extends Component {
 
@@ -135,26 +134,20 @@ class MyProfile extends Component {
 
         return (
             <Container>
-                <Header {...this.props}/>
+                <HeaderAdmin {...this.props}/>
                 <Row>
                     <ProfileContainer>
                         <ProfileContent>
                             <ProfileImge>
-                                <img className="image-size" src={this.props.user.image_url}
-                                     alt={this.props.user.image_url} width="200px" height="auto"/>
+                                <img className="image-size" src="https://png.icons8.com/android/1600/user.png"
+                                     alt="" width="200px" height="auto"/>
                             </ProfileImge>
                             <ProfileDetail>
                                 <ProfileInformationName>
-                                    {this.props.user.display_name !== null ? this.props.user.display_name : "Please add your Display Name"}
+                                    {this.props.user.display_name !== '' ? this.props.user.display_name : "Please add your Display Name"}
                                 </ProfileInformationName>
                                 <ProfileInformationBox>
                                     <ProfileInformation>Personal information</ProfileInformation>
-                                    <ProfileUserName>
-                                        <i className="material-icons card-logo">account_box</i>
-                                        <div className="card-id">
-                                            {this.props.user.card_id !== null && this.props.user.card_id !== '' ? this.props.user.card_id : "Please add your id card"}
-                                        </div>
-                                    </ProfileUserName>
                                     <ProfileBirthDateBox>
                                         <i className="material-icons birthday-logo">cake</i>
                                         <div className="birthday-date">
@@ -173,18 +166,12 @@ class MyProfile extends Component {
                                             {this.props.user.email}
                                         </div>
                                     </ProfileEmail>
-                                    <ProfileEmail>
-                                        <i className="material-icons">domain</i>
-                                        <div className="Account-Email">
-                                            {this.props.user.company_name}
-                                        </div>
-                                    </ProfileEmail>
 								</ProfileInformationBox>
 								<ProfileEdit onClick={this.handleClickEditProfile} raised
 								             className="edit-profile-button">EDIT PROFILE</ProfileEdit>
 								<EditProfileDialog open={this.state.open_edit_profile}
 								                   handleRequestClose={this.handleRequestCloseProfile}
-								                   handleSaveProfile={this.handleSaveProfile}
+								                   handleSaveProfile={this.updateAdult}
 								                   user={this.props.user}
 								                   {...this.props}/>
 							</ProfileDetail>

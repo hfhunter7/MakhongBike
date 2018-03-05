@@ -158,7 +158,7 @@ export function update_profile_trainer( data, dispatch, update_user ) {
     const user_storage = current_user_storage();
     const auth_token = user_storage.auth_token;
 
-    fetch(defaultUrl + '/trainer/update-profile/',
+    fetch(defaultUrl + '/user/update-profile/',
         {
             headers: {
                 'Content-Type': 'application/json',

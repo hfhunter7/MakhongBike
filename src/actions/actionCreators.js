@@ -12,7 +12,7 @@ import {
 import { create_user } from "./register/registerAction";
 import { fetch_equipments } from "./equipment/equipmentAction";
 import {
-    create_reserve, edit_status_payment, fetch_all_reserves,
+    create_reserve, delete_reserve_by_id, edit_adult, edit_child, edit_status_payment, fetch_all_reserves,
     fetch_reserve_detail,
     fetch_reserves
 } from "./reserve/reserveAction";
@@ -118,9 +118,27 @@ export function update_all_reserve( reserve_all ) {
     }
 }
 
-export function EditStatusPayment(id , data){
+export function EditStatusPayment( id, data ) {
     return function ( dispatch ) {
-        edit_status_payment(id ,data, dispatch , update_all_reserve);
+        edit_status_payment(id, data, dispatch, update_all_reserve);
+    }
+}
+
+export function EditChild( id, data ) {
+    return function ( dispatch ) {
+        edit_child(id, data, dispatch, update_reserves_detail);
+    }
+}
+
+export function EditAdult( id, data ) {
+    return function ( dispatch ) {
+        edit_adult(id, data, dispatch, update_reserves_detail);
+    }
+}
+
+export function DeleteReserve( id ) {
+    return function ( dispatch ) {
+        delete_reserve_by_id(id, dispatch, update_all_reserve);
     }
 }
 

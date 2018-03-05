@@ -174,7 +174,8 @@ class Booking extends Component {
             images: [],
             openImageDialog: false,
             trip_id: '',
-            previous_day: false
+            previous_day: false,
+            alert_date: ''
         }
     }
 
@@ -197,12 +198,14 @@ class Booking extends Component {
         {
             console.log('previous day')
             this.setState({
-                previous_day: false
+                previous_day: false,
+                alert_date: 'ไม่สามารถเลือกวันย้อนหลังได้'
             })
         }else {
             console.log('present day' + event.target.value)
             this.setState({
-                previous_day: true
+                previous_day: true,
+                alert_date: ''
             })
         }
 
@@ -309,8 +312,6 @@ class Booking extends Component {
 
         const { classes } = this.props;
 
-
-
         return (
             <Container>
                 <Header {...this.props}/>
@@ -384,6 +385,7 @@ class Booking extends Component {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    helperText={!this.state.previous_day ? this.state.alert_date : ''}
                                     onChange={this.handleChangeDate}
                                 />
                             </DialogContent>

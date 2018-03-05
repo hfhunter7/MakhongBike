@@ -9,62 +9,47 @@ import Dialog, {
 } from 'material-ui/Dialog';
 
 
-class EditProfileDialog extends Component{
-    constructor(props) {
+class EditProfileDialog extends Component {
+    constructor( props ) {
         super(props)
         this.state = {
-            birthday: '',
-            display_name: '',
-            name: '',
-            phone_number: '',
-            company_name:'',
-            title:'',
+            birthday: props.user.birthday || '',
+            display_name: props.user.display_name || '',
+            name: props.user.name || '',
+            phone_number: props.user.phone_number || '',
+            company_name: '',
+            title: '',
         };
     }
 
     checkEnableButton() {
         let disabled = true;
-        if(this.props.user.id){
-            if((this.props.user.birthday !== '' && this.props.user.display_name !== '')
-                &&(this.props.user.name !== '' && this.props.user.phone_number !== '')){
-                disabled = false;
 
-            }else {
-                disabled = true;
-            }
-        }
-        if (this.state.birthday !== '' && this.state.display_name !== '' && this.state.name !== '' && this.state.phone_number !== ''){
-            if((this.state.birthday !== '' && this.state.display_name !== '')
-                && (this.state.name !== '' && this.state.phone_number !== '')){
-                disabled = false;
-            }else{
-                disabled = true;
-            }
+        if (this.state.birthday !== '' && this.state.display_name !== '' && this.state.name !== '' && this.state.phone_number !== '') {
+            disabled = false;
         }
         return disabled
     }
 
 
-    handleRequestClose=()=>{
+    handleRequestClose = () => {
         this.setState({
             birthday: "",
             display_name: "",
             name: "",
             phone_number: "",
-            company_name:"",
-            title:"",
+            company_name: "",
+            title: "",
         });
         this.props.handleRequestClose()
     };
 
-    handleSaveProfile=()=> {
+    handleSaveProfile = () => {
         let data = {
             "birthday": this.state.birthday === '' ? this.props.user.birthday : this.state.birthday,
-            "displayName": this.state.display_name === '' ? this.props.user.display_name : this.state.display_name,
+            "display_name": this.state.display_name === '' ? this.props.user.display_name : this.state.display_name,
             "name": this.state.name === '' ? this.props.user.name : this.state.name,
-            "phoneNumber": this.state.phone_number === '' ? this.props.user.phone_number : this.state.phone_number,
-            "title": this.state.title === '' ? this.props.user.title : this.state.title,
-            "companyName": this.state.company_name === '' ? this.props.user.company_name : this.state.company_name,
+            "phone_number": this.state.phone_number === '' ? this.props.user.phone_number : this.state.phone_number,
         }
         this.props.handleSaveProfile(data)
 
@@ -80,8 +65,8 @@ class EditProfileDialog extends Component{
         return (
             <div>
                 <Dialog
-                        open={this.props.open}
-                        onClose={this.props.handleRequestClose}>
+                    open={this.props.open}
+                    onClose={this.props.handleRequestClose}>
                     <DialogTitle>Edit Profile</DialogTitle>
                     <DialogContent>
                         <TextField autoFocus
@@ -102,14 +87,6 @@ class EditProfileDialog extends Component{
                                    onChange={this.handleChange('name')}
                                    fullWidth/>
 
-                        <TextField margin="dense"
-                                   required
-                                   id="title"
-                                   label="Title"
-                                   placeholder="Please enter Title"
-                                   defaultValue={this.props.user.title}
-                                   onChange={this.handleChange('title')}
-                                   fullWidth/>
                         <TextField
                             required
                             type="date"
@@ -130,14 +107,6 @@ class EditProfileDialog extends Component{
                                    defaultValue={this.props.user.phone_number}
                                    onChange={this.handleChange('phone_number')}
                                    fullWidth/>
-                        <TextField margin="dense"
-                                   required
-                                   id="company_name"
-                                   label="Company Name"
-                                   placeholder="Please enter Company Name"
-                                   defaultValue={this.props.user.company_name}
-                                   onChange={this.handleChange('company_name')}
-                                   fullWidth/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleRequestClose} color="default">
@@ -155,15 +124,12 @@ class EditProfileDialog extends Component{
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps( state ) {
     return {
         user: state.user,
     }
 }
 
-EditProfileDialog.defaultProps={};
+EditProfileDialog.defaultProps = {};
 
-
-
-
-export default  connect(mapStateToProps,null)(EditProfileDialog)
+export default connect(mapStateToProps, null)(EditProfileDialog)

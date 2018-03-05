@@ -7,7 +7,7 @@ export const ProfileContent = styled.div`
 	width: 100%;
     height: auto;
     background-color: #FAFAFA;
-    padding-top: 35px;
+    margin-top: 7%;
     display: inline-flex;
     @media only screen and (max-width: 767px) {
       padding-top: 21px;
