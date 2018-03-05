@@ -33,7 +33,7 @@ import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
 import { ButtonContainer, ButtonMoreImage, PreviewImage } from "../style-js/CourseDetail.style";
 import DialogImage from "../components/shared/DialogImage";
-
+import { DatePicker } from 'material-ui-pickers'
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -175,7 +175,8 @@ class Booking extends Component {
             openImageDialog: false,
             trip_id: '',
             previous_day: false,
-            alert_date: ''
+            alert_date: '',
+            today: new Date()
         }
     }
 
@@ -194,14 +195,13 @@ class Booking extends Component {
     handleChangeDate = ( event ) => {
         const startDate = new Date();
 
-        if(Date.parse(event.target.value)-Date.parse(startDate)<0)
-        {
+        if (Date.parse(event.target.value) - Date.parse(startDate) < 0) {
             console.log('previous day')
             this.setState({
                 previous_day: false,
                 alert_date: 'ไม่สามารถเลือกวันย้อนหลังได้'
             })
-        }else {
+        } else {
             console.log('present day' + event.target.value)
             this.setState({
                 previous_day: true,
@@ -225,6 +225,12 @@ class Booking extends Component {
 
     };
 
+    handleChangeDatePicker = ( date ) => {
+        this.setState({
+            today: date,
+        })
+    };
+
     handleChangeCheckBox = ( name, key ) => ( event ) => {
         this.setState({
             [name]: event.target.checked,
@@ -233,9 +239,12 @@ class Booking extends Component {
     };
 
     handleClickOpenDialog = () => {
-        this.setState({
-            openDialog: true
-        })
+        // this.setState({
+        //     openDialog: true
+        // })
+
+        const current_date = this.state.today.getFullYear() + "-" + (this.state.today.getMonth() + 1) + "-" + this.state.today.getDate();
+        console.log(current_date)
     };
 
     handleRequestCloseDialog = () => {
@@ -267,8 +276,8 @@ class Booking extends Component {
     enableButton() {
         let disabled = true;
 
-        if ((this.state.trip !== '' && this.state.date !== '') && this.state.adult !== '') {
-            if ((this.state.item !== '' && this.state.alert === '') && this.state.previous_day) {
+        if (this.state.trip !== '' && this.state.adult !== '') {
+            if ((this.state.item !== '' && this.state.alert === '')) {
                 disabled = false;
             }
         }
@@ -361,7 +370,7 @@ class Booking extends Component {
                                 >
                                     {
                                         this.props.trip.length > 0 &&
-                                        this.props.trip.map(( trip , index) => {
+                                        this.props.trip.map(( trip, index ) => {
                                             return <FormControlLabel
                                                 key={index}
                                                 value={trip.trip_name}
@@ -377,16 +386,10 @@ class Booking extends Component {
                         <ContentDate>
                             <ReserveText>จองวันที่</ReserveText>
                             <DialogContent>
-                                <TextField
-                                    required
-                                    type="date"
-                                    id="date-local"
-                                    label={this.state.alert !== '' ? this.state.alert : 'Reserve Date'}
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    helperText={!this.state.previous_day ? this.state.alert_date : ''}
-                                    onChange={this.handleChangeDate}
+                                <DatePicker
+                                    value={this.state.today}
+                                    onChange={this.handleChangeDatePicker}
+                                    disablePast={true}
                                 />
                             </DialogContent>
                         </ContentDate>
