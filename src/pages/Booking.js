@@ -18,7 +18,6 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import { withStyles } from 'material-ui/styles';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel, FormHelperText, FormGroup, } from 'material-ui/Form';
-import TextField from 'material-ui/TextField';
 import {
     DialogContent,
 } from 'material-ui/Dialog';
@@ -33,7 +32,10 @@ import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 
 import { ButtonContainer, ButtonMoreImage, PreviewImage } from "../style-js/CourseDetail.style";
 import DialogImage from "../components/shared/DialogImage";
-import { DatePicker } from 'material-ui-pickers'
+
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const TitleDashBoard = styled.div`
     font-size: 20px;
@@ -139,7 +141,7 @@ const ContentCheckBox = styled.div`
 
 const ButtonNext = styled(Button)`
     display: block;
-    margin-left: 47%;
+    margin-left: 47% !important;
 `;
 
 const TypographyText = styled(Typography)`
@@ -176,7 +178,10 @@ class Booking extends Component {
             trip_id: '',
             previous_day: false,
             alert_date: '',
-            today: new Date()
+            today: new Date(),
+            selectedDay: '',
+            startDate: moment(),
+            reserved: []
         }
     }
 
@@ -226,8 +231,22 @@ class Booking extends Component {
     };
 
     handleChangeDatePicker = ( date ) => {
+        const date_now = date._d.toLocaleDateString();
+
+        const date_split = date_now.split('/');
+
+        let date_data;
+
+        if(date_split[0].length < 2){
+            date_data = date_split[2] + '-' + '0' + date_split[0] + '-' + date_split[1];
+        }else{
+            date_data = date_split[2] + '-' + date_split[0] + '-' + date_split[1];
+        }
+
+        console.log(date_data)
         this.setState({
-            today: date,
+            startDate: date,
+            selectedDay: date_data
         })
     };
 
@@ -239,12 +258,9 @@ class Booking extends Component {
     };
 
     handleClickOpenDialog = () => {
-        // this.setState({
-        //     openDialog: true
-        // })
-
-        const current_date = this.state.today.getFullYear() + "-" + (this.state.today.getMonth() + 1) + "-" + this.state.today.getDate();
-        console.log(current_date)
+        this.setState({
+            openDialog: true
+        })
     };
 
     handleRequestCloseDialog = () => {
@@ -276,7 +292,7 @@ class Booking extends Component {
     enableButton() {
         let disabled = true;
 
-        if (this.state.trip !== '' && this.state.adult !== '') {
+        if ((this.state.trip !== '' && this.state.selectedDay) && this.state.adult !== '') {
             if ((this.state.item !== '' && this.state.alert === '')) {
                 disabled = false;
             }
@@ -303,7 +319,34 @@ class Booking extends Component {
     }
 
     componentWillReceiveProps( nextProps, nextContext ) {
-        if (nextProps.trip !== this.props.trip) {
+        if (nextProps.reserve_all !== this.props.reserve_all) {
+            const a = [];
+            let b = [];
+            for(let data of nextProps.reserve_all){
+                a.push(data.reserve_date.split('-'))
+
+            }
+            let is_data;
+            let arr;
+            for(let d of a){
+
+                for(let i = 0 ; i< d.length ; i++){
+                    arr = [];
+                    if(i < 3){
+                        arr.push(parseInt(d[0] , 0) , (parseInt(d[1] , 0) - 1), parseInt(d[2] , 0));
+                    }
+
+                }
+                b.push(arr)
+                is_data = moment(b);
+                this.setState({
+                    reserved: this.state.reserved.concat(is_data)
+                })
+            }
+
+            console.log(b)
+
+
             this.setState({
                 showLoading: false,
             })
@@ -384,12 +427,15 @@ class Booking extends Component {
                         </ContentRadio>
 
                         <ContentDate>
-                            <ReserveText>จองวันที่</ReserveText>
+                            <ReserveText>วันที่จอง</ReserveText>
                             <DialogContent>
                                 <DatePicker
-                                    value={this.state.today}
+                                    dateFormat="YYYY-MM-DD"
+                                    selected={this.state.startDate}
                                     onChange={this.handleChangeDatePicker}
-                                    disablePast={true}
+                                    minDate={moment()}
+                                    withPortal
+                                    excludeDates={this.state.reserved[0]._i}
                                 />
                             </DialogContent>
                         </ContentDate>
@@ -487,7 +533,7 @@ class Booking extends Component {
                             </FormControl>
                         </ContentCheckBox>
                     </ContentReserveItem>
-                    <ButtonNext onClick={this.handleClickOpenDialog} disabled={this.enableButton()} raised
+                    <ButtonNext onClick={this.handleClickOpenDialog} disabled={this.enableButton()} variant="raised"
                                 color="primary">Next</ButtonNext>
                     <HRLineBTM/>
                     <Footer/>
@@ -498,7 +544,7 @@ class Booking extends Component {
                                confirmText="OK"
                                headerText="สรุปการจอง"
                                trip={this.state.trip}
-                               trip_date={this.state.date}
+                               trip_date={this.state.selectedDay}
                                adult={this.state.adult}
                                child={this.state.child}
                                item={this.state.item}
