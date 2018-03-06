@@ -11,13 +11,13 @@ import styled from 'styled-components'
 import { withStyles } from 'material-ui/styles';
 import { reserveTrip } from "../../actions/actionCreators";
 import {
-    AdultText,
-    ChildNumber, ChildText, EquipmentText, ItemBoxDetail, ItemBoxHeader, ItemDate,
+    AdultText, AdultText2,
+    ChildNumber, ChildText, ChildText2, EquipmentText, ItemBoxDetail, ItemBoxHeader, ItemDate,
     ItemRent,
     ItemRentDetail,
     OrderDateTime,
     PurchaseBox, PurchaseBoxHeader, PurchaseBoxHeaderMenu,
-    PurchaseContent, PurchaseDetailBoxText, RouteText, TextRoute
+    PurchaseContent, PurchaseDetailBoxText, RouteText, RouteText2, TextRoute
 } from "../../style-js/PurchaseHistory.style";
 
 
@@ -136,9 +136,9 @@ class ConfirmDialog extends Component {
                                     <ItemBoxDetail>
                                         {
                                             <PurchaseDetailBoxText>
-                                                <RouteText>{this.props.trip}</RouteText>
-                                                <AdultText>{this.props.adult}</AdultText>
-                                                <ChildText>{this.props.child}</ChildText>
+                                                <RouteText2>{this.props.trip}</RouteText2>
+                                                <AdultText2>{this.props.adult}</AdultText2>
+                                                <ChildText2>{this.props.child}</ChildText2>
 
                                             </PurchaseDetailBoxText>
                                         }

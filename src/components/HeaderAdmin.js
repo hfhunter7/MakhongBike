@@ -101,7 +101,7 @@ class HeaderAdmin extends Component {
             <HeaderContainer>
                 <HeaderRow>
                     {
-                        <Logo onClick={this.handleClick.bind(this, "/")}>
+                        <Logo onClick={this.handleClick.bind(this, "/admin")}>
                             <LogoStyle src={LogoImage} alt="logo"/>
                         </Logo>
                     }

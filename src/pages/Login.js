@@ -60,8 +60,8 @@ const TextInput = styled(TextField)`
 `;
 
 const ButtonRegister = styled(Button)`
-    margin-left: 47%;
-    margin-top: 2%;
+    margin-left: 47% !important;
+    margin-top: 2% !important;
 `;
 
 const HRLineBTM = styled.hr`
@@ -135,7 +135,7 @@ class Login extends Component {
                             />
                         </ContentForm>
                         <ButtonRegister
-                            raised
+                            variant="raised"
                             color="primary"
                             onClick={this.handleClickLogin}
                         >

@@ -303,6 +303,17 @@ export const NumberHistory = styled.div`
 	    }
 `;
 
+export const NumberHistoryAdmin2 = styled.div`
+    display: inline-block;
+    width: 8%;
+    margin-left: 3%;
+      @media (max-width: 767px) {
+      width: 5%;
+      float: left;
+      margin-left: 6px;
+	    }
+`;
+
 export const NumberHistoryAdmin = styled.div`
     display: inline-block;
     width: 10%;
@@ -340,6 +351,17 @@ export const RouteText = styled.div`
     display: inline-block;
     width: 34%;
     margin-left: 12%;
+      @media (max-width: 767px) {
+      width: 5%;
+      float: left;
+      margin-left: 6px;
+	    }  
+`;
+
+export const RouteText2 = styled.div`
+    display: inline-block;
+    width: 40%;
+    margin-left: 14%;
       @media (max-width: 767px) {
       width: 5%;
       float: left;
@@ -403,6 +425,16 @@ export const TextDetailAdmin = styled.div`
 
 export const OrderDateTimeAdmin = styled.div`
     display: inline-block;
+    width: 8%;
+      @media (max-width: 767px) {
+		width: 30%;
+    	float: left;
+   	 	word-wrap: break-word;
+	  }
+`;
+
+export const OrderDateTimeAdmin2 = styled.div`
+    display: inline-block;
     width: 13%;
       @media (max-width: 767px) {
 		width: 30%;
@@ -414,6 +446,16 @@ export const OrderDateTimeAdmin = styled.div`
 export const AdultText = styled.div`
     display: inline-block;
     width: 3%;
+      @media (max-width: 767px) {
+		width: 30%;
+    	float: left;
+   	 	word-wrap: break-word;
+	  }
+`;
+
+export const AdultText2 = styled.div`
+    display: inline-block;
+    width: 35%;
       @media (max-width: 767px) {
 		width: 30%;
     	float: left;
@@ -443,6 +485,16 @@ export const OrderNumber = styled.div`
 `;
 
 export const OrderNumberAdmin = styled.div`
+    display: inline-block;
+    width: 20%;
+    margin-left: 6px;
+      @media (max-width: 767px) {
+	   width: 25%; 
+	   text-align: left;
+	    }
+`;
+
+export const OrderNumberAdmin2 = styled.div`
     display: inline-block;
     width: 20%;
       @media (max-width: 767px) {
@@ -494,7 +546,17 @@ export const PaidWith = styled.div`
 
 export const PaidWithAdmin = styled.div`
     display: inline-block;
-    width: 15%;
+    width: 17%;
+	  @media (max-width: 767px) {
+	    width: 20%;
+	    text-align: left;
+	    display: inline-flex;
+	    }
+`;
+
+export const PaidWithAdmin2 = styled.div`
+    display: inline-block;
+    width: 22%;
 	  @media (max-width: 767px) {
 	    width: 20%;
 	    text-align: left;
@@ -658,12 +720,23 @@ export const ChildText = styled.div`
 	}
 `;
 
+export const ChildText2 = styled.div`
+	display: inline-block;
+    width: 10%;
+	 @media (max-width: 767px) {
+    	font-size: 9px;
+    	word-wrap: break-word;
+    	width: 25%;
+    	text-align: left;
+	}
+`;
+
 export const ChildTextAdmin = styled.div`
 	display: inline-block;
     width: 8%;
 	word-wrap: break-word;
 	cursor: pointer;
-	margin-left: 10%;
+	margin-left: 12%;
 	 @media (max-width: 767px) {
     	font-size: 9px;
     	word-wrap: break-word;
@@ -744,7 +817,31 @@ export const OrderTotalAdmin = styled.div`
 	    }
 `;
 
+export const OrderTotalAdmin2 = styled.div`
+    display: inline-block;
+    width: 15%;
+    text-align: left;
+    margin-left: -3%;
+      @media (max-width: 767px) {
+   			width: 20%;
+   			display: inline-flex;
+
+	    }
+`;
+
 export const ReserveStatus = styled.div`
+    display: inline-block;
+    width: 13%;
+    text-align: left;
+    margin-left: 1%;
+      @media (max-width: 767px) {
+   			width: 20%;
+   			display: inline-flex;
+
+	    }
+`;
+
+export const ReserveStatus2 = styled.div`
     display: inline-block;
     width: 15%;
     text-align: left;
@@ -757,6 +854,22 @@ export const ReserveStatus = styled.div`
 `;
 
 export const PurchaseDetailBoxText = styled.div`
+	display: inline-flex;
+	width: 85%;
+	border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #EEEEEE;
+    background-color: #ffffff;
+    line-height: 4;
+    @media (max-width: 767px) {
+      font-size: 10px;
+      width: 100%; 
+      display: inline-block;
+      
+	    }
+`;
+
+export const PurchaseDetailBoxText2 = styled.div`
 	display: inline-flex;
 	width: 100%;
 	border-bottom-style: solid;

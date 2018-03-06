@@ -23,6 +23,7 @@ import EditProfileDialog from "../components/shared/EditProfileDialog";
 import { updateProfileTrainer } from "../actions/actionCreators";
 import { ContainLoader, Loader } from "../style-js/CertificateLayout.style";
 import HeaderAdmin from "../components/HeaderAdmin";
+import Header from "../components/Header";
 
 class MyProfile extends Component {
 
@@ -134,7 +135,12 @@ class MyProfile extends Component {
 
         return (
             <Container>
-                <HeaderAdmin {...this.props}/>
+                {
+                    this.props.user.username === 'admin' ?
+                        <HeaderAdmin {...this.props}/>
+                        :
+                        <Header {...this.props}/>
+                }
                 <Row>
                     <ProfileContainer>
                         <ProfileContent>

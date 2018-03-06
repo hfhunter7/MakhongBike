@@ -15,8 +15,9 @@ import {
     PurchaseBoxHeaderMenu,
     Summary,
     PurchaseDetailBoxText, BillAddress, DetailOrderNumber,
-    DetailDate, DetailPaidWith, ItemBoxHeader, ItemBoxDetail, ItemRent, ItemPrice, RouteText, AdultText, ChildText,
-    ItemRentDetail, EquipmentText, PriceText, TextRoute, ChildNumber, EmptyRent, EmptyRentText
+    DetailDate, DetailPaidWith, ItemBoxHeader, ItemBoxDetail, ItemRent, ItemPrice,
+    ItemRentDetail, EquipmentText, PriceText, TextRoute, ChildNumber, EmptyRent, EmptyRentText, ChildText2, AdultText2,
+    RouteText2
 } from '../style-js/PurchaseHistory.style'
 import { withRouter } from "react-router";
 
@@ -95,9 +96,9 @@ class ReserveHistoryDetail extends Component {
                                     {
                                         Object.keys(this.props.reserve_detail).length !== 0 ?
                                             <PurchaseDetailBoxText key={this.props.reserve_detail.id}>
-                                                <RouteText>{this.props.reserve_detail.route}</RouteText>
-                                                <AdultText>{this.props.reserve_detail.adult}</AdultText>
-                                                <ChildText>{this.props.reserve_detail.child}</ChildText>
+                                                <RouteText2>{this.props.reserve_detail.route}</RouteText2>
+                                                <AdultText2>{this.props.reserve_detail.adult}</AdultText2>
+                                                <ChildText2>{this.props.reserve_detail.child}</ChildText2>
 
                                             </PurchaseDetailBoxText>
                                             :

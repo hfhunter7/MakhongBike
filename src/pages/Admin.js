@@ -146,7 +146,7 @@ class Admin extends Component {
                                         <TitleBox>จัดการทริป</TitleBox>
                                     </Certificatesleft>
                                     <Certificateright>
-                                        <Button onClick={this.handleRequestOpen} color="primary" raised>
+                                        <Button onClick={this.handleRequestOpen} color="primary" variant="raised">
                                             สร้างทริป
                                         </Button>
                                     </Certificateright>

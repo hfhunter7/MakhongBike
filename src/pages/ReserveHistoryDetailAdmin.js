@@ -11,12 +11,11 @@ import {
     PurchaseBoxHeader,
     PurchaseContent,
     PurchaseBoxHeaderMenu,
-    Summary,
-    PurchaseDetailBoxText, BillAddress, DetailOrderNumber,
+    Summary, BillAddress, DetailOrderNumber,
     DetailDate, DetailPaidWith, ItemBoxHeader, ItemBoxDetail, ItemRent, ItemPrice, AdultText,
     ItemRentDetail, EquipmentText, PriceText, ChildNumber, EmptyRent, EmptyRentText, ButtonDelete,
     ButtonDeleteContain, TextRouteAdmin, RouteTextAdmin, ButtonEditAdult, ChildTextAdmin,
-    ButtonEditChild, TextDetailAdmin
+    ButtonEditChild, TextDetailAdmin, PurchaseDetailBoxText2
 } from '../style-js/PurchaseHistory.style'
 import { withRouter } from "react-router";
 
@@ -137,7 +136,7 @@ class ReserveHistoryDetailAdmin extends Component {
                                 <ItemBoxDetail>
                                     {
                                         Object.keys(this.props.reserve_detail).length !== 0 ?
-                                            <PurchaseDetailBoxText key={this.props.reserve_detail.id}>
+                                            <PurchaseDetailBoxText2 key={this.props.reserve_detail.id}>
                                                 <RouteTextAdmin>{this.props.reserve_detail.route}</RouteTextAdmin>
                                                 <AdultText>{this.props.reserve_detail.adult}</AdultText>
                                                 <ButtonEditAdult
@@ -145,7 +144,7 @@ class ReserveHistoryDetailAdmin extends Component {
                                                 <ChildTextAdmin>{this.props.reserve_detail.child}</ChildTextAdmin>
                                                 <ButtonEditChild
                                                     onClick={this.openDialog('open_child_dialog')}>แก้ไข</ButtonEditChild>
-                                            </PurchaseDetailBoxText>
+                                            </PurchaseDetailBoxText2>
                                             :
                                             <div>No purchase</div>
                                     }

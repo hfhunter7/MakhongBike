@@ -435,6 +435,7 @@ class Booking extends Component {
                                     onChange={this.handleChangeDatePicker}
                                     minDate={moment()}
                                     withPortal
+                                    disabledKeyboardNavigation
                                     excludeDates={this.state.reserved[0]._i}
                                 />
                             </DialogContent>

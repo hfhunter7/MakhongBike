@@ -22,7 +22,8 @@ import {
     PaidWithAdmin,
     OrderTotalAdmin,
     ReserveStatus,
-    ButtonEditStatusPayment,
+    ButtonEditStatusPayment, NumberHistoryAdmin2, PaidWithAdmin2, OrderTotalAdmin2, OrderDateTimeAdmin2,
+    OrderNumberAdmin2, ReserveStatus2,
 } from '../style-js/PurchaseHistory.style'
 
 import { withRouter } from "react-router";
@@ -118,7 +119,7 @@ class ReserveHistoryAdmin extends Component {
                                     <PurchaseBox>
                                         <PurchaseBoxHeaderHistory>
                                             <PurchaseBoxHeaderMenuHistory>
-                                                <NumberHistoryAdmin> # </NumberHistoryAdmin>
+                                                <NumberHistoryAdmin2> # </NumberHistoryAdmin2>
                                                 <OrderDateTimeAdmin> ผู้จอง</OrderDateTimeAdmin>
                                                 <OrderNumberAdmin> วันที่จอง (ปี/เดือน/วัน) </OrderNumberAdmin>
                                                 <PaidWithAdmin> เส้นทาง</PaidWithAdmin>
@@ -130,24 +131,26 @@ class ReserveHistoryAdmin extends Component {
                                             {
                                                 this.props.reserve_all.length > 0 ?
                                                     this.props.reserve_all.map(( reserve, index ) => {
-                                                        return (
+                                                        return (<div key={index}>
                                                             <PurchaseDetailBoxText key={index}
                                                                                    data-id={reserve.id}
                                                                                    onClick={this.handleClickReserveDetail}
                                                             >
                                                                 <NumberHistoryAdmin>{index + 1}</NumberHistoryAdmin>
-                                                                <OrderDateTimeAdmin>{reserve.create_by}</OrderDateTimeAdmin>
-                                                                <OrderNumberAdmin>{reserve.reserve_date}</OrderNumberAdmin>
-                                                                <PaidWithAdmin>{reserve.route}</PaidWithAdmin>
-                                                                <OrderTotalAdmin>{reserve.rent_status}</OrderTotalAdmin>
-                                                                <ReserveStatus>{reserve.status_payment}</ReserveStatus>
+                                                                <OrderDateTimeAdmin2>{reserve.create_by}</OrderDateTimeAdmin2>
+                                                                <OrderNumberAdmin2>{reserve.reserve_date}</OrderNumberAdmin2>
+                                                                <PaidWithAdmin2>{reserve.route}</PaidWithAdmin2>
+                                                                <OrderTotalAdmin2>{reserve.rent_status}</OrderTotalAdmin2>
+                                                                <ReserveStatus2>{reserve.status_payment}</ReserveStatus2>
+
+                                                            </PurchaseDetailBoxText>
                                                                 <ButtonEditStatusPayment
                                                                     color="primary"
                                                                     onClick={this.openDialog('openEditDialog', reserve.id, reserve.status_payment)}
                                                                 >
                                                                     แก้ไข
-                                                                </ButtonEditStatusPayment>
-                                                            </PurchaseDetailBoxText>
+                                                                </ButtonEditStatusPayment></div>
+
                                                         )
                                                     })
                                                     :

@@ -22,7 +22,7 @@ import {
     PurchaseBoxHeaderMenuHistory,
     PurchaseBoxDetail,
     PurchaseDetailOrderNumber,
-    PurchaseDetailBoxText,
+    PurchaseDetailBoxText2,
 } from '../style-js/PurchaseHistory.style'
 
 import { withRouter } from "react-router";
@@ -96,7 +96,7 @@ class ReserveHistory extends Component {
                                                 this.props.reserve.length > 0 ?
                                                     this.props.reserve.map(( reserve, index ) => {
                                                         return (
-                                                            <PurchaseDetailBoxText key={index}
+                                                            <PurchaseDetailBoxText2 key={index}
                                                                                    onClick={this.handleClickOrderDetail}
                                                                                    data-id={reserve.id}>
                                                                 <NumberHistory>{index + 1}</NumberHistory>
@@ -104,7 +104,7 @@ class ReserveHistory extends Component {
                                                                 <PurchaseDetailOrderNumber>{reserve.reserve_date}</PurchaseDetailOrderNumber>
                                                                 <PaidWith>{reserve.route}</PaidWith>
                                                                 <OrderTotal>{reserve.rent_status}</OrderTotal>
-                                                            </PurchaseDetailBoxText>
+                                                            </PurchaseDetailBoxText2>
                                                         )
                                                     })
                                                     :
