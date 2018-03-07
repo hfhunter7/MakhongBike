@@ -11,15 +11,23 @@ import styled from 'styled-components'
 import { withStyles } from 'material-ui/styles';
 import { reserveTrip } from "../../actions/actionCreators";
 import {
-    AdultText, AdultText2,
-    ChildNumber, ChildText, ChildText2, EquipmentText, ItemBoxDetail, ItemBoxHeader, ItemDate,
+    AdultText2,
+    ChildNumber,ChildText2,
+    EquipmentText,
+    ItemBoxDetail,
+    ItemBoxHeader,
+    ItemDate,
     ItemRent,
     ItemRentDetail,
     OrderDateTime,
-    PurchaseBox, PurchaseBoxHeader, PurchaseBoxHeaderMenu,
-    PurchaseContent, PurchaseDetailBoxText, RouteText, RouteText2, TextRoute
+    PurchaseBox,
+    PurchaseBoxHeader,
+    PurchaseBoxHeaderMenu,
+    PurchaseContent,
+    PurchaseDetailBoxText,
+    RouteText2,
+    TextRoute
 } from "../../style-js/PurchaseHistory.style";
-
 
 const styles = theme => ({
     root: {
@@ -82,7 +90,7 @@ class ConfirmDialog extends Component {
         for (let equipment of this.props.equipments) {
             let data_acc = {
                 equipment_id: ''
-            }
+            };
             if (equipment.name === this.props.acc_bike) {
                 data_acc.equipment_id = equipment.id;
                 data_equipment.push(data_acc)

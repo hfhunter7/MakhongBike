@@ -129,16 +129,9 @@ class ReserveHistoryDetail extends Component {
 
                             </PurchaseBox>
                         </PurchaseContent>
-                        {
-                            this.props.reserve_detail.rent_status === 'เช่าอุปกรณ์' ?
-                                <Summary>
-                                    {`ยอดรวมสุทธิ: ฿ ${(this.state.summary * this.state.count) + (this.state.count * 300)}`}
-                                </Summary>
-                                :
-                                <Summary>
-                                    {`ยอดรวมสุทธิ: ฿ ${this.state.summary + (this.state.count * 300)}`}
-                                </Summary>
-                        }
+                        <Summary>
+		                    {`ยอดรวมสุทธิ: ฿ ${this.props.reserve_detail.price}`}
+                        </Summary>
                     </PurchaseContainer>
                     <Footer/>
                 </Row>

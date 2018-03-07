@@ -237,13 +237,9 @@ class Booking extends Component {
 
         let date_data;
 
-        if(date_split[0].length < 2){
-            date_data = date_split[2] + '-' + '0' + date_split[0] + '-' + date_split[1];
-        }else{
-            date_data = date_split[2] + '-' + date_split[0] + '-' + date_split[1];
-        }
+	    date_data = date_split[2] + '-' + date_split[0] + '-' + date_split[1];
 
-        console.log(date_data)
+        console.log(date_data);
         this.setState({
             startDate: date,
             selectedDay: date_data

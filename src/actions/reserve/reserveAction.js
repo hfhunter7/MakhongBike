@@ -99,6 +99,27 @@ export function fetch_reserve_detail( id, dispatch, update_reserve_detail ) {
         });
 }
 
+export function fetch_reserve_stat( dispatch, update_reserve_stat ) {
+	const user_storage = current_user_storage();
+	const auth_token = user_storage.auth_token;
+	fetch(defaultUrl + `/reserve/stat`,
+		{
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': createJwtFromToken('', auth_token)
+			}
+		})
+	.then(function ( response ) {
+		if (response.status >= 400) {
+			//throw new Error("Bad response from server");
+		}
+		return response.json()
+	}).then(
+		function ( json ) {
+			dispatch(update_reserve_stat(json))
+		});
+}
+
 export function edit_status_payment(id, data, dispatch, update_all_reserve ) {
     const user_storage = current_user_storage();
     const auth_token = user_storage.auth_token;

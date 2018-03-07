@@ -8,6 +8,7 @@ import trip from "./trip";
 import trip_detail from "./trip_detail";
 import trip_image_url from "./trip_image_url";
 import reserve_all from "./reserver_all";
+import reserve_stat from './reserve_stat';
 
 const rootReducer = combineReducers({
     user,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     trip_detail,
     trip_image_url,
     reserve_all,
+    reserve_stat,
     routing: routerReducer
 });
 

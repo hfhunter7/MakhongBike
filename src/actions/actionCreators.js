@@ -5,16 +5,17 @@ import {
 
 //////////////////////////// User Action ////////////////////////////
 import {
-    FETCH_ALL_RESERVE,
-    FETCH_EQUIPMENT, FETCH_RESERVE, FETCH_RESERVE_DETAIL, FETCH_TRIP, FETCH_TRIP_DETAIL, FETCH_TRIP_URL,
-    UPDATE_USER
+	FETCH_ALL_RESERVE,
+	FETCH_EQUIPMENT, FETCH_RESERVE, FETCH_RESERVE_DETAIL, FETCH_RESERVE_STAT, FETCH_TRIP, FETCH_TRIP_DETAIL,
+	FETCH_TRIP_URL,
+	UPDATE_USER
 } from "./types";
 import { create_user } from "./register/registerAction";
 import { fetch_equipments } from "./equipment/equipmentAction";
 import {
-    create_reserve, delete_reserve_by_id, edit_adult, edit_child, edit_status_payment, fetch_all_reserves,
-    fetch_reserve_detail,
-    fetch_reserves
+	create_reserve, delete_reserve_by_id, edit_adult, edit_child, edit_status_payment, fetch_all_reserves,
+	fetch_reserve_detail, fetch_reserve_stat,
+	fetch_reserves
 } from "./reserve/reserveAction";
 import {
     add_trip_image,
@@ -154,11 +155,24 @@ export function getAllReserves() {
     }
 }
 
+export function getReserveStat() {
+	return function ( dispatch ) {
+		fetch_reserve_stat(dispatch, update_reserves_stat);
+	}
+}
+
 export function update_reserves_detail( reserve_detail ) {
     return {
         type: FETCH_RESERVE_DETAIL,
         reserve_detail
     }
+}
+
+export function update_reserves_stat( reserve_stat ) {
+	return {
+		type: FETCH_RESERVE_STAT,
+		reserve_stat
+	}
 }
 
 export function getReservesDetail( id ) {
